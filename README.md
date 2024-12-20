@@ -9,8 +9,8 @@
 -  成品案例(集成若依)  [预览入口](http://117.72.70.166/admin/)
 -  独立流程设计器 [预览入口](http://117.72.70.166/ant-flow/dist/) 
 -  项目文档 [wiki入口](https://gitee.com/ldhnet/AntFlow-Designer/wikis) 
--  开源前端地址 [Gitee仓库](https://gitee.com/ldhnet/AntFlow-Designer) | [GitHub仓库](https://github.com/ldhnet/AntFlow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/FlowDesigner/overview) 
--  开源后端地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/AntFlow) | [GitCode仓库](https://gitcode.com/zypqqgc/AntFlow/overview) 
+-  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/AntFlow-Designer) | [GitHub仓库](https://github.com/ldhnet/AntFlow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/FlowDesigner/overview) 
+-  Antflow项目地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/AntFlow) | [GitCode仓库](https://gitcode.com/zypqqgc/AntFlow/overview) 
  
 - QQ技术交流群（972107977） 期待您的加入
 - 有疑问/建议可以Issues留言，我们会认真对待  [issues地址](https://gitee.com/ldhnet/AntFlow-Designer/issues)
@@ -20,8 +20,8 @@
 - UI钉钉风格
 - 技术点<br />
  1、组件自调用+递归处理，按树状结局处理审批流程问题<br />
- 2、本项目流程设计器，方便集成到现有项目中或者二次开发<br />
- 3、集成到管理系统本版 https://gitee.com/tylerzhou/Antflow
+ 2、接入 VForm3 低代码表单实现【零】编码发起工作流<br />
+ 3、本项目流程设计器，方便集成到现有项目中或者二次开发<br /> 
 - 流程设计器<br />
   1、节点操作：流程节点（添加、修改、删除)。<br />
   2、节点设置：包括审批人、发起人、抄送人、条件设置。<br />
