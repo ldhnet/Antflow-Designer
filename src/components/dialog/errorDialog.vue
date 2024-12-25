@@ -52,7 +52,7 @@ let visibleDialog = computed({
 })
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .ant-confirm-body .ant-confirm-title {
   color: rgba(0, 0, 0, .85);
   font-weight: 500;

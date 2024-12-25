@@ -282,7 +282,7 @@ const arrTransfer = (index, type = 1) => {
     emits("update:nodeConfig", props.nodeConfig);
 };
 </script>
-<style>
+<style lang="css" scoped>
 .error_tip {
     position: absolute;
     top: 0px;

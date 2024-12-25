@@ -1,398 +1,50 @@
-body {
-    background: #eee
+.filter-container {
+    padding: 5px 0 10px 0;
 }
 
-@font-face {
-    font-family: Chinese Quote;
-    src: local("PingFang SC"), local("SimSun");
-    unicode-range: u+2018, u+2019, u+201c, u+201d
+.filter-container .el-button,
+.filter-container .el-input,
+.filter-container .el-input__inner {
+    padding: 0 15px;
+    height: 34px;
+    line-height: 34px;
 }
 
-body,
-html {
-    width: 100%;
-    /* height: 100% */
+.form-container {
+    background: white !important;
+    padding: 15px;
+    text-align: center;
+    min-width: 800px;
+    height: 100%;
 }
 
-input::-ms-clear,
-input::-ms-reveal {
-    display: none
-}
-
-*,
-:after,
-:before {
-    box-sizing: border-box
-}
-
-html {
-    font-family: sans-serif;
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-}
-
-@-ms-viewport {
-    width: device-width
-}
-
-article,
-aside,
-dialog,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
-    display: block
-}
-
-body {
-    margin: 0;
-    font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5;
-    color: rgba(0, 0, 0, .65);
-    background-color: #fff
-}
-
-[tabindex="-1"]:focus {
-    outline: none!important
-}
-
-hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: 0;
-    margin-bottom: .5em;
-    color: rgba(0, 0, 0, .85);
-    font-weight: 500
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 1em
-}
-
-abbr[data-original-title],
-abbr[title] {
-    text-decoration: underline;
-    text-decoration: underline dotted;
-    cursor: help;
-    border-bottom: 0
-}
-
-address {
-    margin-bottom: 1em;
-    font-style: normal;
-    line-height: inherit
-}
-
-input[type=number],
-input[type=password],
-input[type=text],
-textarea {
-    -webkit-appearance: none
-}
-
-dl,
-ol,
-ul {
-    margin-top: 0;
-    margin-bottom: 1em
-}
-
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-    margin-bottom: 0
-}
-
-dt {
-    font-weight: 500
-}
-
-dd {
-    margin-bottom: .5em;
-    margin-left: 0
-}
-
-blockquote {
-    margin: 0 0 1em
-}
-
-dfn {
-    font-style: italic
-}
-
-b,
-strong {
-    font-weight: bolder
-}
-
-small {
-    font-size: 80%
-}
-
-sub,
-sup {
-    position: relative;
-    font-size: 75%;
-    line-height: 0;
-    vertical-align: baseline
-}
-
-sub {
-    bottom: -.25em
-}
-
-sup {
-    top: -.5em
-}
-
-a {
-    color: #1890ff;
-    background-color: transparent;
-    text-decoration: none;
-    outline: none;
+.page-close-box {
+    position: absolute;
+    top: -0;
+    right: -0;
+    width: 42px;
+    height: 42px;
+    text-align: center;
     cursor: pointer;
-    transition: color .3s;
-    -webkit-text-decoration-skip: objects
+    z-index: 999;
 }
 
-a:focus {
-    text-decoration: underline;
-    text-decoration-skip: auto
+.page-close-box img {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-image: url();
 }
 
-a:hover {
-    color: #40a9ff
-}
-
-a:active {
-    color: #096dd9
-}
-
-a:active,
-a:hover {
-    outline: 0;
-    text-decoration: none
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-    font-size: 1em
-}
-
-pre {
-    margin-top: 0;
-    margin-bottom: 1em;
-    overflow: auto
-}
-
-figure {
-    margin: 0 0 1em
-}
-
-img {
-    vertical-align: middle;
-    border-style: none
-}
-
-svg:not(:root) {
-    overflow: hidden
-}
-
-[role=button],
-a,
-area,
-button,
-input:not([type=range]),
-label,
-select,
-summary,
-textarea {
-    touch-action: manipulation
-}
-
-table {
-    border-collapse: collapse
-}
-
-caption {
-    padding-top: .75em;
-    padding-bottom: .3em;
-    color: rgba(0, 0, 0, .45);
-    text-align: left;
-    caption-side: bottom
-}
-
-th {
-    text-align: inherit
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit
-}
-
-button,
-input {
-    overflow: visible
-}
-
-button,
-select {
-    text-transform: none
-}
-
-[type=reset],
-[type=submit],
-button,
-html [type=button] {
-    -webkit-appearance: button
-}
-
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner,
-button::-moz-focus-inner {
-    padding: 0;
-    border-style: none
-}
-
-input[type=checkbox],
-input[type=radio] {
-    box-sizing: border-box;
-    padding: 0
-}
-
-input[type=date],
-input[type=datetime-local],
-input[type=month],
-input[type=time] {
-    -webkit-appearance: listbox
-}
-
-textarea {
-    overflow: auto;
-    resize: vertical
-}
-
-fieldset {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: 0
-}
-
-legend {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin-bottom: .5em;
-    font-size: 1.5em;
-    line-height: inherit;
-    color: inherit;
-    white-space: normal
-}
-
-progress {
-    vertical-align: baseline
-}
-
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-    height: auto
-}
-
-[type=search] {
-    outline-offset: -2px;
-    -webkit-appearance: none
-}
-
-[type=search]::-webkit-search-cancel-button,
-[type=search]::-webkit-search-decoration {
-    -webkit-appearance: none
-}
-
-::-webkit-file-upload-button {
-    font: inherit;
-    -webkit-appearance: button
-}
-
-output {
-    display: inline-block
-}
-
-summary {
-    display: list-item
-}
-
-template {
-    display: none
-}
-
-[hidden] {
-    display: none!important
-}
-
-mark {
-    padding: .2em;
-    background-color: #feffe6
-}
-
-::selection {
-    background: #1890ff;
-    color: #fff
-}
-
-.clearfix {
-    zoom: 1
-}
-
-.clearfix:after,
-.clearfix:before {
-    content: "";
-    display: table
-}
-
-.clearfix:after {
-    clear: both
-}
-
-@font-face {
-    font-family: anticon;
-    font-display: fallback;
-    src: url("https://at.alicdn.com/t/font_148784_v4ggb6wrjmkotj4i.eot");
-    src: url("https://at.alicdn.com/t/font_148784_v4ggb6wrjmkotj4i.woff") format("woff"), url("https://at.alicdn.com/t/font_148784_v4ggb6wrjmkotj4i.ttf") format("truetype"), url("https://at.alicdn.com/t/font_148784_v4ggb6wrjmkotj4i.svg#iconfont") format("svg")
+.page-close-box::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 20px solid #46A6FE;
+    border-color: #46A6FE #46A6FE transparent transparent;
+    content: '';
 }
 
 .anticon {
@@ -409,29 +61,37 @@ mark {
 
 .anticon:before {
     display: block;
-    font-family: anticon!important
+    font-family: anticon !important
 }
+
 .anticon-close:before {
-  content: "\E633"
+    /*"\E633" */
+    content:  url("../assets/images/add-close1.png");
 }
+
 .anticon-right:before {
-    content: "\E61F"
+    content:  url("../assets/images/jiaojiao.png");
 }
-.anticon-exclamation-circle{
+
+.anticon-exclamation-circle {
     color: rgb(242, 86, 67)
 }
-.anticon-exclamation-circle:before {
-    content: "\E62C"
+
+.anticon-exclamation-circle:before { 
+    content:  url("../assets/images/warning.png");
 }
 
 .anticon-left:before {
-    content: "\E620"
+    content:  url("../assets/images/jiaojiao1.png");
 }
 
 .anticon-close-circle:before {
-    content: "\E62E"
+    content:  url("../assets/images/cancel.png");
 }
-  
+
+.anticon-delete:before {
+    content:  url("../assets/images/delete.png");
+}
 .ant-btn {
     line-height: 1.5;
     display: inline-block;
@@ -660,7 +320,7 @@ mark {
 .ant-input:focus,
 .ant-input:hover {
     border-color: #40a9ff;
-    border-right-width: 1px!important
+    border-right-width: 1px !important
 }
 
 .ant-input:focus {
@@ -674,261 +334,6 @@ textarea.ant-input {
     vertical-align: bottom;
     transition: all .3s, height 0s;
     min-height: 32px
-}
-
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-p,
-pre,
-q,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline
-}
-
-*,
-:after,
-:before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
-}
-
-html {
-    font-family: sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
-}
-
-body,
-html {
-    font-size: 14px
-}
-
-body {
-    font-family: Microsoft Yahei, Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #fff;
-    position: static!important;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-}
-
-ol,
-ul {
-    list-style-type: none
-}
-
-b,
-strong {
-    font-weight: 700
-}
-
-img {
-    border: 0
-}
-
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-    font-size: 100%;
-    margin: 0
-}
-
-textarea {
-    overflow: auto;
-    vertical-align: top;
-    -webkit-appearance: none
-}
-
-button,
-input {
-    line-height: normal
-}
-
-button,
-select {
-    text-transform: none
-}
-
-button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
-    -webkit-appearance: button;
-    cursor: pointer
-}
-
-input[type=search] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box
-}
-
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
-    -webkit-appearance: none
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    border: 0;
-    padding: 0
-}
-
-table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse
-}
-
-table,
-td,
-th {
-    border: 0
-}
-
-td,
-th {
-    padding: 0;
-    vertical-align: top
-}
-
-th {
-    font-weight: 700;
-    text-align: left
-}
-
-thead th {
-    white-space: nowrap
-}
-
-a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #3296fa
-}
-
-a:active,
-a:hover {
-    outline: 0;
-    color: #3296fa
-}
-
-small {
-    font-size: 80%
-}
-
-body,
-html {
-    font-size: 12px!important;
-    color: #191f25!important;
-    background: #f6f6f6!important
-}
-
-.wrap {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    height: 100%
-}
-
-@font-face {
-    font-family: IconFont;
-    src: url("//at.alicdn.com/t/font_135284_ph2thxxbzgf.eot");
-    src: url("//at.alicdn.com/t/font_135284_ph2thxxbzgf.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_135284_ph2thxxbzgf.woff") format("woff"), url("//at.alicdn.com/t/font_135284_ph2thxxbzgf.ttf") format("truetype"), url("//at.alicdn.com/t/font_135284_ph2thxxbzgf.svg#IconFont") format("svg")
-}
-
-.iconfont {
-    font-family: IconFont!important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: .2px;
-    -moz-osx-font-smoothing: grayscale
 }
 
 .my-nav {
@@ -1133,7 +538,7 @@ html {
 }
 
 .zoom .zoom-out {
-    background-image: url(https://gw.alicdn.com/tfs/TB1s0qhBHGYBuNjy0FoXXciBFXa-90-90.png)
+    background-image: url(../assets/images/TB1s0qhBHGYBuNjy0FoXXciBFXa-90-90.png)
 }
 
 .zoom .zoom-out.disabled {
@@ -1141,7 +546,7 @@ html {
 }
 
 .zoom .zoom-in {
-    background-image: url(https://gw.alicdn.com/tfs/TB1UIgJBTtYBeNjy1XdXXXXyVXa-90-90.png)
+    background-image: url(../assets/images/TB1UIgJBTtYBeNjy1XdXXXXyVXa-90-90.png)
 }
 
 .zoom .zoom-in.disabled {
@@ -1718,5 +1123,3 @@ html {
 .ant-btn {
     position: relative
 }
-
-

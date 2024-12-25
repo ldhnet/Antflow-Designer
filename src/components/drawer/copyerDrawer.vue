@@ -78,19 +78,34 @@ const closeDrawer = () => {
     setCopyer(false)
 }    
 </script>
+<style lang="css" scoped>
+.copyer_content {
+    padding: 20px 20px 0;
+}
+.el-checkbox {
+    margin-bottom: 20px;
+}
+.el-button {
+    margin-bottom: 20px;
+}
+.selected_list {
+    margin-bottom: 20px;
+    line-height: 30px;
+}
 
-<style lang="less">
-.set_copyer {
-    .copyer_content {
-        padding: 20px 20px 0;
+.selected_list span {
+    margin-right: 10px;
+    padding: 3px 6px 3px 9px;
+    line-height: 12px;
+    white-space: nowrap;
+    border-radius: 2px;
+    border: 1px solid rgba(220, 220, 220, 1);
+}
 
-        .el-button {
-            margin-bottom: 20px;
-        }
-
-        .el-checkbox {
-            margin-bottom: 20px;
-        }
-    }
+.selected_list img {
+    margin-left: 5px;
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
 }
 </style>

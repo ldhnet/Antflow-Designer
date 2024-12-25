@@ -6,7 +6,7 @@
 -->
 
 <template>
-    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" class="condition_copyer" :show-close="false" :size="550" :before-close="saveCondition"> 
+    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" class="condition_copyer" :show-close="false" :size="600" :before-close="saveCondition"> 
         <template #header="{ titleId, titleClass }">
             <h3 :id="titleId" :class="titleClass">条件设置</h3>
             <select v-model="conditionConfig.priorityLevel" class="priority_level">
@@ -59,8 +59,12 @@
                                 <input type="text" style="width:75px;" v-enter-number="2" v-model="item.zdy2">
                             </p>
                         </div>
-                        <a v-if="item.type==1" @click="conditionConfig.nodeApproveList= [];$func.removeEle(conditionConfig.conditionList,item,'formId')">删除</a>
-                        <a v-if="item.type==2" @click="$func.removeEle(conditionConfig.conditionList,item,'formId')">删除</a>
+                        <a v-if="item.type==1" @click="conditionConfig.nodeApproveList= [];$func.removeEle(conditionConfig.conditionList,item,'formId')">
+                            <i class="anticon anticon-delete" style="color: #f00;"></i>
+                        </a>
+                        <a v-if="item.type==2" @click="$func.removeEle(conditionConfig.conditionList,item,'formId')">
+                            <i class="anticon anticon-delete" style="color: #f00;"></i>
+                        </a>
                     </li>
                 </ul>
                 <el-button type="primary" @click="addCondition">添加条件</el-button>
@@ -224,7 +228,7 @@ const closeDrawer = (val) => {
     setCondition(false)
 }
 </script>
-<style lang="less">
+<style lang="css" scoped>
 .condition_copyer {
     .priority_level {
         position: absolute;
@@ -236,8 +240,7 @@ const closeDrawer = (val) => {
         border-radius: 4px;
         border: 1px solid rgba(217, 217, 217, 1);
         font-size: 12px;
-    }
-
+    } 
     .condition_content {
         padding: 20px 20px 0;
 
@@ -261,7 +264,7 @@ const closeDrawer = (val) => {
                 &>span {
                     float: left;
                     margin-right: 8px;
-                    width: 70px;
+                    width: 120px !important;
                     line-height: 32px;
                     text-align: right;
                 }

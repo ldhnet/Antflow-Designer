@@ -5,9 +5,11 @@
             <div class="drawer_content">
                 <div class="approver_content">
                     <el-radio-group v-model="approverConfig.setType" class="clear" @change="changeType">
-                        <el-radio v-for="({ value, label }) in setTypes" :key="value" :value="value">{{ label }}</el-radio>
+                        <el-radio v-for="({ value, label }) in setTypes" :key="value" :value="value">{{ label
+                            }}</el-radio>
                     </el-radio-group>
-                    <el-button type="primary" @click="addApprover" v-if="approverConfig.setType == 1">添加/修改成员</el-button>
+                    <el-button type="primary" @click="addApprover"
+                        v-if="approverConfig.setType == 1">添加/修改成员</el-button>
                     <p class="selected_list" v-if="approverConfig.setType == 1">
                         <span v-for="(item, index) in approverConfig.nodeApproveList" :key="index">{{ item.name }}
                             <img src="@/assets/images/add-close1.png"
@@ -57,7 +59,7 @@
                 </div>
 
                 <el-tabs v-model="activeName" class="set-tabs" @tab-click="handleTabClick">
-                    <el-tab-pane label="基础设置" name="baseTab">                        
+                    <el-tab-pane label="基础设置" name="baseTab">
                         <div class="approver_some">
                             <p>多人审批时采用的审批方式</p>
                             <el-radio-group v-model="approverConfig.signType" class="clear">
@@ -75,27 +77,27 @@
                             </el-radio-group>
                         </div>
                     </el-tab-pane>
-                    <el-tab-pane label="按钮设置" name="btnTab">                    
+                    <el-tab-pane label="按钮设置" name="btnTab">
                         <div class="approver_some">
                             <p>审批页面按钮权限显示控制</p>
                             <el-checkbox v-model="checkedOk" label="同意" border />
                             <el-checkbox v-model="checkedNot" label="不同意" border />
                             <el-checkbox v-model="checkedBack" label="打回" border />
                         </div>
-                    </el-tab-pane> 
-                </el-tabs> 
+                    </el-tab-pane>
+                </el-tabs>
             </div>
             <div class="demo-drawer__footer clear">
                 <el-button type="primary" @click="saveApprover">确 定</el-button>
                 <el-button @click="closeDrawer">取 消</el-button>
-            </div> 
+            </div>
             <selectUser v-model:visible="approverVisible" :data="checkedList" @change="sureApprover" />
             <role-dialog v-model:visible="approverRoleVisible" :data="checkedRoleList" @change="sureRoleApprover" />
         </div>
     </el-drawer>
 </template>
 <script setup>
-import { ref, watch, computed } from 'vue' 
+import { ref, watch, computed } from 'vue'
 import $func from '@/utils/index'
 import { setTypes } from '@/utils/const'
 import { useStore } from '@/stores/index'
@@ -129,7 +131,7 @@ let checkedOk = ref(true)
 let checkedNot = ref(true)
 let checkedBack = ref(false)
 const activeName = ref('baseTab')
- 
+
 const handleTabClick = (tab, event) => {
     //console.log(tab, event)
 }
@@ -163,7 +165,7 @@ const sureRoleApprover = (data) => {
     approverConfig.value.nodeApproveList = data;
     approverRoleVisible.value = false;
 }
-const saveApprover = () => { 
+const saveApprover = () => {
     approverConfig.value.error = !$func.setApproverStr(approverConfig.value)
     setApproverConfig({
         value: approverConfig.value,
@@ -176,78 +178,98 @@ const closeDrawer = () => {
     setApprover(false)
 }
 </script>
-<style lang="less">
-.el-tabs { 
+<style lang="css" scoped>
+.el-tabs {
     margin-left: 20px !important;
 }
-.set_promoter {
-    .approver_content {
-        padding-bottom: 10px;
-        border-bottom: 1px solid #f2f2f2;
+
+.selected_list {
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+.selected_list span {
+    margin-right: 10px;
+    padding: 3px 6px 3px 9px;
+    line-height: 12px;
+    white-space: nowrap;
+    border-radius: 2px;
+    border: 1px solid rgba(220, 220, 220, 1);
+}
+
+.selected_list img {
+    margin-left: 5px;
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+}
+
+.approver_content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.approver_self_select,
+.approver_content {
+    .el-button {
+        margin-bottom: 20px;
+    }
+}
+
+.approver_content,
+.approver_some,
+.approver_self_select {
+    .el-radio-group {
+        display: unset;
     }
 
-    .approver_self_select,
-    .approver_content {
-        .el-button {
-            margin-bottom: 20px;
-        }
+    .el-radio {
+        width: 27%;
+        margin-bottom: 20px;
+        height: 16px;
     }
+}
 
-    .approver_content,
-    .approver_some,
-    .approver_self_select {
-        .el-radio-group {
-            display: unset;
-        }
+.approver_manager p {
+    line-height: 32px;
+}
 
-        .el-radio {
-            width: 27%;
-            margin-bottom: 20px;
-            height: 16px;
-        }
-    }
+.approver_manager select {
+    width: 420px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
 
-    .approver_manager p {
-        line-height: 32px;
-    }
+.approver_manager p.tip {
+    margin: 10px 0 22px 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: #f8642d;
+}
 
-    .approver_manager select {
-        width: 420px;
-        height: 32px;
-        background: rgba(255, 255, 255, 1);
-        border-radius: 4px;
-        border: 1px solid rgba(217, 217, 217, 1);
-    }
+.approver_self {
+    padding: 28px 20px;
+}
 
-    .approver_manager p.tip {
-        margin: 10px 0 22px 0;
-        font-size: 12px;
-        line-height: 16px;
-        color: #f8642d;
-    }
+.approver_self_select,
+.approver_manager,
+.approver_content {
+    padding: 20px 20px 0;
+}
 
-    .approver_self {
-        padding: 28px 20px;
-    }
+.approver_manager p:first-of-type,
+.approver_some p {
+    line-height: 19px;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
 
-    .approver_self_select,
-    .approver_manager,
-    .approver_content {
-        padding: 20px 20px 0;
-    }
-
-    .approver_manager p:first-of-type,
-    .approver_some p {
-        line-height: 19px;
-        font-size: 14px;
-        margin-bottom: 14px;
-    }
-
-    .approver_self_select h3 {
-        margin: 5px 0 20px;
-        font-size: 14px;
-        font-weight: bold;
-        line-height: 19px;
-    }
+.approver_self_select h3 {
+    margin: 5px 0 20px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
 }
 </style>

@@ -60,7 +60,7 @@ const addType = (type)=> {
     }
 }
 </script>
-<style scoped lang="less">
+<style lang="css" scoped>
 .add-node-btn-box {
     width: 240px;
     display: -webkit-inline-box;

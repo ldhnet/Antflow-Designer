@@ -65,23 +65,24 @@ onMounted(async () => {
     return preTreeIsApproveNode(treeNode.childNode);
   } 
 }
-const reErr = ({ childNode }) => {
+/** 节点验证 */
+const validateErr = ({ childNode }) => {
     if (childNode) {
         let { nodeType, error, nodeName, conditionNodes } = childNode;
         if (nodeType == 1) {
-            reErr(childNode);
+            validateErr(childNode);
         }
         else if (nodeType == 2) {
-            reErr(childNode);
+            validateErr(childNode);
             for (var i = 0; i < conditionNodes.length; i++) {
                 if (conditionNodes[i].error) {
                     tipList.value.push({ name: conditionNodes[i].nodeName, nodeType: "条件" });
                 }
-                reErr(conditionNodes[i]);
+                validateErr(conditionNodes[i]);
             }
         }
         else if (nodeType == 3) {
-            reErr(childNode);
+            validateErr(childNode);
         }
         else if (nodeType == 4 || nodeType == 5) {
             if (error) {
@@ -90,13 +91,13 @@ const reErr = ({ childNode }) => {
                     nodeType: nodeTypeList[nodeType],
                 });
             }
-            reErr(childNode);
+            validateErr(childNode);
         }
     } else {
         childNode = null;
     }
 };
-
+/** 页面显示比例 */
 const zoomSize = (type) => {
     if (type == 1) {
         if (nowVal.value == 50) {
@@ -119,7 +120,7 @@ const getJson = () => {
         return false;
     }  
     tipList.value = [];
-    reErr(nodeConfig.value);
+    validateErr(nodeConfig.value);
     if (tipList.value.length != 0) {
         emit('nextChange', { label: "流程设计", key: "processDesign" });
         tipVisible.value = true;
@@ -143,6 +144,6 @@ defineExpose({
     getData
 })
 </script>
-<style scoped>
+<style lang="css" scoped>
 
 </style>
