@@ -119,11 +119,12 @@ props.nodeConfig.nodeDisplayName = showText;
 
 let isInputList = ref([]);
 let isInput = ref(false);
-const resetConditionNodesErr = () => {
-    for (var i = 0; i < props.nodeConfig.conditionNodes.length; i++) {
-        props.nodeConfig.conditionNodes[i].error = $func.conditionStr(props.nodeConfig, i) == "请设置条件" && i != props.nodeConfig.conditionNodes.length - 1; 
-        props.nodeConfig.conditionNodes[i].isDefault = 0;
-        props.nodeConfig.conditionNodes[i].nodeDisplayName =  $func.conditionStr(props.nodeConfig, i);
+const resetConditionNodesErr = () => { 
+    for (var i = 0; i < props.nodeConfig.conditionNodes.length; i++) { 
+        let conditionTitle= $func.conditionStr(props.nodeConfig, i);  
+        props.nodeConfig.conditionNodes[i].error = conditionTitle == "请设置条件" && i != props.nodeConfig.conditionNodes.length - 1; 
+        props.nodeConfig.conditionNodes[i].isDefault = 0;   
+        props.nodeConfig.conditionNodes[i].nodeDisplayName = conditionTitle=='null' || conditionTitle==''?props.nodeConfig.conditionNodes[i].nodeDisplayName:conditionTitle;
     }
     let maxLen = props.nodeConfig.conditionNodes.length-1;
     let node = props.nodeConfig.conditionNodes[maxLen];
@@ -201,8 +202,8 @@ const delNode = () => {
 };
 const addTerm = () => {
     let len = props.nodeConfig.conditionNodes.length + 1;
-    let n_name='条件1' + len;
-    props.nodeConfig.conditionNodes.push(NodeUtils.createConditionNode(n_name,null,0));
+    let n_name='条件' + len;
+    props.nodeConfig.conditionNodes.push(NodeUtils.createConditionNode(n_name,null,len,0));
     resetConditionNodesErr()
     emits("update:nodeConfig", props.nodeConfig);
 };

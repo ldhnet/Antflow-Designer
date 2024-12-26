@@ -110,7 +110,7 @@ All.prototype = {
     conditionStr(nodeConfig, index) {
         var { conditionList, nodeApproveList } = nodeConfig.conditionNodes[index];
         if (conditionList.length == 0) {
-            return (index == nodeConfig.conditionNodes.length - 1) && nodeConfig.conditionNodes[0].conditionList.length != 0 ? '其他条件进入此流程' : '请设置条件'
+            return (index == nodeConfig.conditionNodes.length - 1) && nodeConfig.conditionNodes[index].conditionList.length == 0 ? '其他条件进入此流程' : '请设置条件'
         } else {
             let str = ""
             for (var i = 0; i < conditionList.length; i++) {
@@ -121,12 +121,12 @@ All.prototype = {
                         str += nodeApproveList.map(item => { return item.name }).join("或") + " 并且 "
                     }
                 }
-                if (columnType == "String" && showType == "3") {
+                else if (columnType == "String" && showType == "3") {
                     if (zdy1) {
                         str += showName + '属于：' + this.dealStr(zdy1, JSON.parse(fixedDownBoxValue)) + " 并且 "
                     }
                 }
-                if (columnType == "String" && showType == "2") {
+                else if (columnType == "String" && showType == "2") {
                     if (!fixedDownBoxValue) {
                         str += nodeConfig.conditionNodes[index].nodeDisplayName + "     "
                     }else {
@@ -135,18 +135,21 @@ All.prototype = {
                         }
                     }                  
                 }
-                if (columnType == "Double" && showType == "2") {
+                else if (columnType == "Double" && showType == "2") {
                     if (zdy1) {
                         str += showName + '：' + this.getLabelStr(zdy1, JSON.parse(fixedDownBoxValue)) + " 并且 "
                     }
                 }
-                if (columnType == "Double" && showType != "2") {
+                else if (columnType == "Double" && showType != "2") {
                     if (optType != 6 && zdy1) {
                         var optTypeStr = ["", "<", ">", "≤", "=", "≥"][optType]
                         str += `${showName} ${optTypeStr} ${zdy1} 并且 `
                     } else if (optType == 6 && zdy1 && zdy2) {
                         str += `${zdy1} ${opt1} ${showName} ${opt2} ${zdy2} 并且 `
                     }
+                }
+                else {
+                    str += null
                 }
             }
             return str ? str.substring(0, str.length - 4) : '请设置条件'
