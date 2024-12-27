@@ -3,16 +3,15 @@
         <div class="form-container">
             <el-form ref="ruleFormRef" :model="form" :rules="rules" label-width="auto"
                 style="max-width: 600px;margin: auto;">
+                <el-form-item label="流程编号" prop="formCode">
+                    <el-input v-model="form.formCode" disabled placeholder="请输入流程编号" :style="{ width: '100%' }" />
+                </el-form-item>
                 <el-form-item label="选择分组" prop="flowGroup">
                     <el-select v-model="form.flowGroup" placeholder="请选择选择分组" :style="{ width: '100%' }">
                         <el-option v-for="(item, index) in flowOptions" :key="index" :label="item.label"
                             :value="item.value"></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="流程编号" prop="formCode">
-                    <el-input v-model="form.formCode" disabled placeholder="请输入流程编号" :style="{ width: '100%' }" />
-                </el-form-item>
-
                 <el-form-item label="审批名称" prop="bpmnName">
                     <el-input v-model="form.bpmnName" placeholder="请输入审批名称" :style="{ width: '100%' }" />
                 </el-form-item>
@@ -23,17 +22,31 @@
                             :value="item.value"></el-option>
                     </el-select>
                 </el-form-item>
+                <el-form-item label="模板图标" prop="icon">
+                    <img :src="activeIconSrc" style="width: 28px;height: 28px;vertical-align: middle;">
+                    <el-button plain @click="dialogVisible = true" style="margin-left: 10px;">选择图标</el-button>
+                </el-form-item>
                 <el-form-item label="审批说明" prop="remark">
                     <el-input v-model="form.remark" type="textarea" placeholder="请输入审批说明" :maxlength="100"
                         show-word-limit :autosize="{ minRows: 4, maxRows: 4 }" :style="{ width: '100%' }"></el-input>
-                </el-form-item> 
+                </el-form-item>
             </el-form>
         </div>
+        <el-dialog title="选择图标" v-model="dialogVisible" width="612px">
+            <img v-for="(icon, index) in iconList" :key="index" :src="icon.src" class="icon-item"
+                :class="{ active: selectedIcon === icon.id }" @click="selectedIcon = icon.id">
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button @click="dialogVisible = false; selectedIcon = activeIcon">关 闭</el-button>
+                    <el-button type="primary" @click="dialogVisible = false; activeIcon = selectedIcon">确 定</el-button>
+                </div>
+            </template>
+        </el-dialog>
     </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, getCurrentInstance } from 'vue'
+import { ref, reactive, onMounted, getCurrentInstance, computed } from 'vue'
 import { NodeUtils } from '@/utils/nodeUtils'
 const { proxy } = getCurrentInstance()
 const emit = defineEmits(['nextChange'])
@@ -43,6 +56,13 @@ let props = defineProps({
         default: () => (null),
     }
 });
+const fileImgs  = import.meta.glob( '@/assets/flowIcon/**/*.png') 
+const fileImgKeys =Object.keys(fileImgs); 
+const iconList = fileImgKeys.map((t, idx) => ({src: t, id: idx})) 
+
+let dialogVisible= ref(false);
+let activeIcon= ref(iconList[0].id);
+let selectedIcon =ref(iconList[0].id);
 
 const generatorID = "PROJECT_" + NodeUtils.idGenerator();
 const ruleFormRef = ref(null);
@@ -73,6 +93,10 @@ const form = reactive({
     deduplicationType: 1
 })
 
+let activeIconSrc = computed(()=> {
+  const icon = iconList.find(t => t.id === activeIcon.value)
+  return icon ? icon.src : ''
+})  
 onMounted(async () => {
     if (props.basicData) {
         form.bpmnName = props.basicData.bpmnName;
@@ -127,4 +151,20 @@ defineExpose({
     getData
 })
 </script>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.icon-item {
+    width: 40px;
+    height: 40px;
+    margin: 6px;
+    position: relative;
+    cursor: pointer;
+    opacity: .5; 
+    &.active {
+        opacity: 1;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+</style>
