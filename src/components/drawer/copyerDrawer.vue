@@ -5,29 +5,27 @@
  * @FilePath: /flow-designer/src/components/drawer/copyerDrawer.vue
 -->
 <template>
-    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" class="set_copyer" :show-close="false" :size="550" :before-close="saveCopyer"> 
-        <div class="demo-drawer__content">
-            <div class="copyer_content drawer_content">
-                <el-button type="primary" @click="addCopyer">添加成员</el-button>
-                <p class="selected_list">
-                    <span v-for="(item,index) in copyerConfig.nodeApproveList" :key="index">{{item.name}}
-                        <img src="@/assets/images/add-close1.png" @click="$func.removeEle(copyerConfig.nodeApproveList,item,'targetId')">
-                    </span>
-                    <a v-if="copyerConfig.nodeApproveList&&copyerConfig.nodeApproveList.length!=0" @click="copyerConfig.nodeApproveList=[]">清除</a>
-                </p>
-                <el-checkbox-group v-model="ccFlag" class="clear">
-                    <el-checkbox :value="1">允许发起人自选抄送人</el-checkbox>
-                </el-checkbox-group>
-            </div>
-            <div class="demo-drawer__footer clear">
-                <el-button type="primary" @click="saveCopyer">确 定</el-button>
-                <el-button @click="closeDrawer">取 消</el-button>
-            </div> 
-            <selectUser
-                v-model:visible="copyerVisible"
-                :data="checkedList"
-                @change="sureCopyer" />
+    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" class="set_copyer" :show-close="false" :size="550"
+        :before-close="saveCopyer">
+        <div class="copyer_content">
+            <el-button type="primary" @click="addCopyer">添加成员</el-button>
+            <p class="selected_list">
+                <span v-for="(item, index) in copyerConfig.nodeApproveList" :key="index">🙍‍♂️{{ item.name }}
+                    <img src="@/assets/images/add-close1.png"
+                        @click="$func.removeEle(copyerConfig.nodeApproveList, item, 'targetId')">
+                </span>
+                <a v-if="copyerConfig.nodeApproveList && copyerConfig.nodeApproveList.length != 0"
+                    @click="copyerConfig.nodeApproveList = []">清除</a>
+            </p>
+            <el-checkbox-group v-model="ccFlag" class="clear">
+                <el-checkbox :value="1">允许发起人自选抄送人</el-checkbox>
+            </el-checkbox-group>
         </div>
+        <div class="demo-drawer__footer clear">
+            <el-button type="primary" @click="saveCopyer">确 定</el-button>
+            <el-button @click="closeDrawer">取 消</el-button>
+        </div>
+        <selectUser v-model:visible="copyerVisible" :data="checkedList" @change="sureCopyer" />
     </el-drawer>
 </template>
 <script setup>
@@ -81,6 +79,8 @@ const closeDrawer = () => {
 <style lang="css" scoped>
 .copyer_content {
     padding: 20px 20px 0;
+    border-top: 1px solid rgba(220, 220, 220, 1);
+    height: calc(100% - 75px);
 }
 .el-checkbox {
     margin-bottom: 20px;
@@ -98,7 +98,7 @@ const closeDrawer = () => {
     padding: 3px 6px 3px 9px;
     line-height: 12px;
     white-space: nowrap;
-    border-radius: 2px;
+    border-radius: 5px;
     border: 1px solid rgba(220, 220, 220, 1);
 }
 
