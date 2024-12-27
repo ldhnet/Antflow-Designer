@@ -6,7 +6,7 @@
 
 - [![star](https://gitee.com/ldhnet/AntFlow-Designer/badge/star.svg?theme=dark)](https://gitee.com/ldhnet/AntFlow-Designer/stargazers)  [![fork](https://gitee.com/ldhnet/AntFlow-Designer/badge/fork.svg?theme=dark)](https://gitee.com/ldhnet/AntFlow-Designer/members)
 
--  成品案例(集成若依)  [预览入口](http://117.72.70.166/admin/)
+-  成品案例  [预览入口](http://117.72.70.166/admin/)
 -  独立流程设计器 [预览入口](http://117.72.70.166/ant-flow/dist/) 
 -  项目文档 [wiki入口](https://gitee.com/ldhnet/AntFlow-Designer/wikis) 
 -  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/AntFlow-Designer) | [GitHub仓库](https://github.com/ldhnet/AntFlow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/FlowDesigner/overview) 
@@ -38,6 +38,13 @@
 ![](./public/images/12.png)  
   
 -------------------   
+## 项目源码
+
+| 项目 | Gitee   | Github    | GitCode|
+| ---- | ----| ---- | ---- |
+| 设计器 | [AntFlow-Designer](https://gitee.com/ldhnet/AntFlow-Designer) | [AntFlow-Designer](https://github.com/ldhnet/AntFlow-Designer) | [AntFlow-Designer](https://gitcode.com/ldhnet/FlowDesigner/overview) |
+
+| 成品项目 | [AntFlow](https://gitee.com/tylerzhou/Antflow) | [AntFlow](https://github.com/mrtylerzhou/AntFlow) | [AntFlow](https://gitcode.com/zypqqgc/AntFlow/overview)|
 
 #### 项目运行 node14.20.1 以上版本
 > 1.下载项目 git clone https://gitee.com/ldhnet/AntFlow-Designer.git
