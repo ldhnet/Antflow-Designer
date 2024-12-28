@@ -1,5 +1,5 @@
 <template>
-    <el-drawer :append-to-body="true" title="审批人" v-model="visible" class="set_promoter" :with-header="false"
+    <el-drawer :append-to-body="true" title="审批人" v-model="visible" class="set_approver" :with-header="false"
         :show-close="false" :size="550" :before-close="saveApprover">
         <div class="el-drawer__header" style="border-bottom: 1px solid rgba(220, 220, 220, 1);">
             <span class="drawer-title">审批人</span>
@@ -12,19 +12,20 @@
                         <el-radio v-for="({ value, label }) in setTypes" :key="value" :value="value">{{ label
                             }}</el-radio>
                     </el-radio-group>
-                    <el-button type="primary" @click="addApprover"
-                        v-if="approverConfig.setType == 1">添加/修改成员</el-button>
-                    <p class="selected_list" v-if="approverConfig.setType == 1">
-                        <span v-for="(item, index) in approverConfig.nodeApproveList" :key="index">🙍‍♂️{{ item.name
-                            }}
-                            <img src="@/assets/images/add-close1.png"
-                                @click="$func.removeEle(approverConfig.nodeApproveList, item, 'targetId')">
-                        </span>
-                        <a v-if="approverConfig.nodeApproveList.length != 0"
-                            @click="approverConfig.nodeApproveList = []">清除</a>
-                    </p>
 
-                    <div class="approver_manager" v-if="approverConfig.setType == 2">
+                    <div class="approver_btn" v-if="approverConfig.setType == 1">
+                        <el-button type="primary" @click="addApprover">添加/修改成员</el-button>
+                        <p class="selected_list">
+                            <span v-for="(item, index) in approverConfig.nodeApproveList" :key="index">🙍‍♂️{{ item.name
+                                }}
+                                <img src="@/assets/images/add-close1.png"
+                                    @click="$func.removeEle(approverConfig.nodeApproveList, item, 'targetId')">
+                            </span>
+                            <a v-if="approverConfig.nodeApproveList.length != 0"
+                                @click="approverConfig.nodeApproveList = []">清除</a>
+                        </p>
+                    </div>
+                    <div class="approver_select" v-if="approverConfig.setType == 2">
                         <p>
                             <span>发起人的：</span>
                             <select v-model="approverConfig.directorLevel">
@@ -35,7 +36,7 @@
                         <p class="tip">找不到主管时，由上级主管代审批</p>
                     </div>
 
-                    <div class="approver_self_select" v-show="approverConfig.setType == 3">
+                    <div class="approver_btn" v-show="approverConfig.setType == 3">
 
                         <el-button type="primary" @click="addRoleApprover">添加/修改角色</el-button>
                         <p class="selected_list">
@@ -48,7 +49,7 @@
                                 @click="approverConfig.nodeApproveList = []">清除</a>
                         </p>
                     </div>
-                    <div class="approver_self_select" v-show="approverConfig.setType == 4">
+                    <div class="approver_btn" v-show="approverConfig.setType == 4">
 
                         <el-button type="primary" @click="addRoleApprover">添加/修改部门</el-button>
                         <p class="selected_list">
@@ -61,11 +62,11 @@
                                 @click="approverConfig.nodeApproveList = []">清除</a>
                         </p>
                     </div>
-                    <div class="approver_self" v-if="approverConfig.setType == 5">
+                    <div class="approver_text" v-if="approverConfig.setType == 5">
                         <p>该审批节点设置“发起人自己”后，审批人默认为发起人</p>
                     </div>
                 </div>
-                <div class="approver_some">
+                <div class="approver_block">
                     <p>✍多人审批时采用的审批方式</p>
                     <el-radio-group v-model="approverConfig.signType" class="clear">
                         <el-radio :value="1">会签（需所有审批人同意，不限顺序）</el-radio>
@@ -73,7 +74,7 @@
                         <el-radio :value="2">或签（只需一名审批人同意或拒绝即可）</el-radio>
                     </el-radio-group>
                 </div>
-                <div class="approver_some">
+                <div class="approver_block">
                     <p>✍审批人为空时</p>
                     <el-radio-group v-model="approverConfig.noHeaderAction" class="clear">
                         <el-radio :value="1">自动审批通过/不允许发起</el-radio>
@@ -83,7 +84,7 @@
                 </div>
             </el-tab-pane>
             <el-tab-pane label="按钮设置" name="btnTab">
-                <div class="approver_some">
+                <div class="approver_block">
                     <p>🚩审批页面按钮权限显示控制</p>
                     <el-checkbox v-model="checkedOk" label="同意" border
                         style="margin: 6px 0;width: 100%;height: 45px;" />
@@ -193,7 +194,7 @@ const closeDrawer = () => {
 
 .selected_list {
     margin-bottom: 20px;
-    line-height: 30px;
+    line-height: 35px;
 }
 
 .selected_list span {
@@ -232,7 +233,7 @@ const closeDrawer = () => {
     background-color: var(--el-border-color);
 }
 
-.approver_self_select,
+.approver_btn,
 .approver_content {
     .el-button {
         margin-bottom: 20px;
@@ -240,8 +241,8 @@ const closeDrawer = () => {
 }
 
 .approver_content,
-.approver_some,
-.approver_self_select {
+.approver_block,
+.approver_btn {
     .el-radio-group {
         display: unset;
     } 
@@ -252,11 +253,11 @@ const closeDrawer = () => {
     }
 }
 
-.approver_manager p {
+.approver_select p {
     line-height: 32px;
 }
 
-.approver_manager select {
+.approver_select select {
     width: 420px;
     height: 32px;
     background: rgba(255, 255, 255, 1);
@@ -264,19 +265,19 @@ const closeDrawer = () => {
     border: 1px solid rgba(217, 217, 217, 1);
 }
 
-.approver_manager p.tip {
+.approver_select p.tip {
     margin: 10px 0 22px 0;
     font-size: 12px;
     line-height: 16px;
     color: #f8642d;
 }
 
-.approver_self {
+.approver_text {
     padding: 28px 20px;
     color: #f8642d;
 } 
-.approver_manager p:first-of-type,
-.approver_some p {
+.approver_select p:first-of-type,
+.approver_block p {
     line-height: 19px;
     font-size: 15px;
     margin-bottom: 14px;
