@@ -55,16 +55,33 @@ let props = defineProps({
         type: Object,
         default: () => (null),
     }
-});
-const fileImgs  = import.meta.glob( '@/assets/flowIcon/**/*.png') 
+}); 
+
+/**
+ * 匹配静态文件路径
+ * @param metaUrl 
+ */
+ const getPath = (metaUrl) =>{
+  let path = ''
+  if (import.meta.env.MODE !== 'development') { 
+    const metaUrlMatch = metaUrl.match(/^(.*?)\/public\//) // 匹配public前面的路径
+    if (metaUrlMatch && metaUrlMatch[0]) {
+          path = metaUrl.replace(metaUrlMatch[0], '/ant-flow/dist/')
+    } 
+  }else{
+    path = metaUrl
+  } 
+  return path
+} 
+const fileImgs  = import.meta.glob('/public/flowIcon/**/*') 
 const fileImgKeys =Object.keys(fileImgs); 
-const iconList = fileImgKeys.map((t, idx) => ({src: t, id: idx})) 
+const iconList = fileImgKeys.map((t, idx) => ({src: getPath(t), id: idx})) 
 
 let dialogVisible= ref(false);
 let activeIcon= ref(iconList[0].id);
 let selectedIcon =ref(iconList[0].id);
 
-const generatorID = "PROJECT_" + NodeUtils.idGenerator();
+const generatorID = "BIZ_" + NodeUtils.idGenerator();
 const ruleFormRef = ref(null);
 let autoRepeatOptions = [{
     "label": "不启用自动去重",
@@ -134,6 +151,7 @@ const nextSubmit = (ruleFormRef) => {
         }
     })
 }
+
 // 给父级页面提供得获取本页数据得方法
 const getData = () => {
     return new Promise((resolve, reject) => {
