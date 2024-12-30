@@ -16,7 +16,7 @@ export let setTypes = [
   { value: 3, label: '指定角色' },
   //{ value: 4, label: '指定部门' },
   { value: 5, label: '发起人自己' },
-
+  { value: 6, label: '层层审批' },
 ]
 
 export let optTypes = [

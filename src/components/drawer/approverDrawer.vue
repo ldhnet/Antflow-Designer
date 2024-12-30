@@ -28,14 +28,13 @@
                     <div class="approver_select" v-if="approverConfig.setType == 2">
                         <p>
                             <span>发起人的：</span>
-                            <select v-model="approverConfig.directorLevel">
+                            <select v-model="approverConfig.directorLevel" style="width: 250px;">
                                 <option v-for="item in directorMaxLevel" :value="item" :key="item">
                                     {{ item == 1 ? '直接' : '第' + item + '级' }}主管</option>
                             </select>
                         </p>
                         <p class="tip">找不到主管时，由上级主管代审批</p>
                     </div>
-
                     <div class="approver_btn" v-show="approverConfig.setType == 3">
 
                         <el-button type="primary" @click="addRoleApprover">添加/修改角色</el-button>
@@ -65,6 +64,9 @@
                     <div class="approver_text" v-if="approverConfig.setType == 5">
                         <p>该审批节点设置“发起人自己”后，审批人默认为发起人</p>
                     </div>
+                    <div class="approver_text" v-if="approverConfig.setType == 6">  
+                        <span>直到发起人的第  <el-input-number v-model="approverConfig.directorLevel" :min="1"/> 级主管</span> 
+                    </div> 
                 </div>
                 <div class="approver_block">
                     <p>✍多人审批时采用的审批方式</p>
@@ -273,7 +275,7 @@ const closeDrawer = () => {
 }
 
 .approver_text {
-    padding: 28px 20px;
+    padding: 10px 0px;
     color: #f8642d;
 } 
 .approver_select p:first-of-type,

@@ -85,6 +85,8 @@ All.prototype = {
             return "指定部门"
         } else if (nodeConfig.setType == 5) {
             return "发起人自己"
+        } else if (nodeConfig.setType == 6) {
+            return "层层审批：直到发起人的第"+ nodeConfig.directorLevel +"级主管"
         }  
     },
     dealStr(str, obj) {
