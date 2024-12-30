@@ -27,7 +27,12 @@
                         </el-button>
                       </template>
                     </el-table-column>
-                    <el-table-column label="用户名称" prop="userName" :show-overflow-tooltip="true" /> 
+                    <el-table-column label="用户名称" prop="userName" :show-overflow-tooltip="true" >   
+                      <template #default="scope">
+                        <el-avatar size="small">{{scope.row.userName.substring(0,1)}}</el-avatar>
+                         {{scope.row.userName}}
+                      </template>
+                    </el-table-column> 
                     <el-table-column label="邮箱" prop="email" :show-overflow-tooltip="true" /> 
                     <el-table-column label="状态" align="center" prop="status">
                       <template #default="scope">
@@ -169,4 +174,5 @@ getList();
     background-color: rgb(197.7, 225.9, 255); 
     border-left: 5px solid #409eff; 
 }
+.el-avatar {background: #409eff;margin-right: 10px;}
 </style>
