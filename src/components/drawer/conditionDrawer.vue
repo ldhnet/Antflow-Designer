@@ -34,7 +34,7 @@
                             </p>
                         </div>
                         <div v-else-if="item.columnType == 'String' && item.showType == 2">
-                            <p class="check_box">
+                            <p>
                                 <select style="width:300px;" v-model="item.zdy1"> 
                                     <option v-for="({key, value}) in JSON.parse(item.fixedDownBoxValue)" :value="key" :key="key">{{ value }}</option>
                                 </select>
@@ -229,8 +229,10 @@ const closeDrawer = (val) => {
 }
 </script>
 <style lang="css" scoped>
-.set_condition {
-    .priority_level {
+ul, li {
+    list-style: none;
+}
+.set_condition .priority_level {
         position: absolute;
         top: 11px;
         right: 30px;
@@ -241,104 +243,87 @@ const closeDrawer = (val) => {
         border: 1px solid rgba(217, 217, 217, 1);
         font-size: 12px;
     } 
-    .condition_content {
-        padding: 20px 20px 0;
 
-        p.tip {
-            margin: 20px 0;
-            width: 510px;
-            text-indent: 17px;
-            line-height: 45px;
-            background: rgba(241, 249, 255, 1);
-            border: 1px solid rgba(64, 163, 247, 1);
-            color: #46a6fe;
-            font-size: 14px;
-        }
-
-        ul {
-            max-height: 500px;
-            overflow-y: scroll;
-            margin-bottom: 20px;
-
-            li {
-                &>span {
-                    float: left;
-                    margin-right: 8px;
-                    width: 120px !important;
-                    line-height: 32px;
-                    text-align: right;
-                }
-
-                &>div {
-                    display: inline-block;
-                    width: 370px;
-
-                    &>p:not(:last-child) {
-                        margin-bottom: 10px;
-                    }
-                }
-
-                &:not(:last-child)>div>p {
-                    margin-bottom: 20px;
-                }
-
-                &>a {
-                    float: right;
-                    margin-right: 10px;
-                    margin-top: 7px;
-                }
-
-                select,
-                input {
-                    width: 100%;
-                    height: 32px;
-                    background: rgba(255, 255, 255, 1);
-                    border-radius: 4px;
-                    border: 1px solid rgba(217, 217, 217, 1);
-                }
-
-                select+input {
-                    width: 260px;
-                }
-
-                select {
-                    margin-right: 10px;
-                    width: 100px;
-                }
-
-                p.selected_list {
-                    padding-left: 10px;
-                    border-radius: 4px;
-                    min-height: 32px;
-                    border: 1px solid rgba(217, 217, 217, 1);
-                    word-break: break-word;
-                }
-
-                p.check_box {
-                    line-height: 32px;
-                }
-            }
-        }
-
-        .el-button {
-            margin-bottom: 20px;
-        }
-    }
+.set_condition .condition_content{
+    padding: 20px 20px 0; 
+} 
+.set_condition .el-button {
+    margin-bottom: 20px;
+}
+.set_condition p.tip {
+    margin: 20px 0;
+    width: 510px;
+    text-indent: 17px;
+    line-height: 45px;
+    background: rgba(241, 249, 255, 1);
+    border: 1px solid rgba(64, 163, 247, 1);
+    color: #46a6fe;
+    font-size: 14px;
 }
 
-.condition_list {
-    .el-dialog__body {
-        padding: 16px 26px;
-    }
-
-    p {
-        color: #666666;
-        margin-bottom: 10px;
-
-        &>.check_box {
-            margin-bottom: 0;
-            line-height: 36px;
-        }
-    }
+.set_condition  ul {
+    max-height: 500px;
+    /* overflow-y: scroll; */
+    margin-bottom: 20px; 
 }
+.set_condition  ul li{ 
+    height: 50px;
+    line-height: 50px; 
+}
+.set_condition ul li span {
+    float: left;
+    margin-right: 8px;
+    width: 120px !important; 
+    text-align: right;
+    color: #0857a1;
+}
+.set_condition ul li div {
+    display: inline-block;
+    width: 370px;
+}
+
+.set_condition ul li div p:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.set_condition ul li:not(:last-child)>div>p {
+    margin-bottom: 20px;
+} 
+
+.set_condition ul li div p select {
+    width: 50%;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
+.set_condition ul li div p input {
+    width: 200px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
+ 
+.set_condition ul li p.selected_list {
+    padding-left: 10px;
+    border-radius: 4px;
+    min-height: 32px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    word-break: break-word;
+}
+ 
+.condition_list .el-dialog__body {
+    padding: 16px 26px;
+}
+.condition_list p { 
+    color: #666666; 
+    margin-bottom: 10px;
+}
+
+.condition_list p.check_box{ 
+    margin-bottom: 0;
+    line-height: 30px; 
+}
+
 </style>
