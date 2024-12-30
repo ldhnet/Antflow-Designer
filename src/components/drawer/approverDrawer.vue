@@ -260,7 +260,7 @@ const closeDrawer = () => {
 }
 
 .approver_select select {
-    width: 420px;
+    width: 250px;
     height: 32px;
     background: rgba(255, 255, 255, 1);
     border-radius: 4px;

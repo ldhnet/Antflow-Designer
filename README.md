@@ -4,16 +4,16 @@
 
 ## 基于Vue3 + ElementPlus的独立流程设计器
 
-- [![star](https://gitee.com/ldhnet/AntFlow-Designer/badge/star.svg?theme=dark)](https://gitee.com/ldhnet/AntFlow-Designer/stargazers)  [![fork](https://gitee.com/ldhnet/AntFlow-Designer/badge/fork.svg?theme=dark)](https://gitee.com/ldhnet/AntFlow-Designer/members)
+- [![star](https://gitee.com/ldhnet/Antflow-Designer/badge/star.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/stargazers)  [![fork](https://gitee.com/ldhnet/Antflow-Designer/badge/fork.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/members)
 
 -  成品案例  [预览入口](http://117.72.70.166/admin/)
 -  独立流程设计器 [预览入口](http://117.72.70.166/ant-flow/dist/) 
--  项目文档 [wiki入口](https://gitee.com/ldhnet/AntFlow-Designer/wikis) 
--  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/AntFlow-Designer) | [GitHub仓库](https://github.com/ldhnet/AntFlow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/FlowDesigner/overview) 
--  Antflow项目地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/AntFlow) | [GitCode仓库](https://gitcode.com/zypqqgc/AntFlow/overview) 
+-  项目文档 [wiki入口](https://gitee.com/ldhnet/Antflow-Designer/wikis) 
+-  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/Antflow-Designer) | [GitHub仓库](https://github.com/ldhnet/Antflow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/Antflow-Designer/overview) 
+-  Antflow项目地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/Antflow) | [GitCode仓库](https://gitcode.com/zypqqgc/Antflow/overview) 
  
 - QQ技术交流群（972107977） 期待您的加入
-- 有疑问/建议可以Issues留言，我们会认真对待  [issues地址](https://gitee.com/ldhnet/AntFlow-Designer/issues)
+- 有疑问/建议可以Issues留言，我们会认真对待  [issues地址](https://gitee.com/ldhnet/Antflow-Designer/issues)
 
 
 ## 项目介绍
@@ -42,11 +42,11 @@
 
 | 项目 | Gitee   | Github    | GitCode|
 | ---- | ----| ---- | ---- |
-| 设计器 | [AntFlow-Designer](https://gitee.com/ldhnet/AntFlow-Designer) | [AntFlow-Designer](https://github.com/ldhnet/AntFlow-Designer) | [AntFlow-Designer](https://gitcode.com/ldhnet/FlowDesigner/overview) | 
-| 成品项目 | [AntFlow](https://gitee.com/tylerzhou/Antflow) | [AntFlow](https://github.com/mrtylerzhou/AntFlow) | [AntFlow](https://gitcode.com/zypqqgc/AntFlow/overview) |
+| 设计器 | [Antflow-Designer](https://gitee.com/ldhnet/Antflow-Designer) | [Antflow-Designer](https://github.com/ldhnet/Antflow-Designer) | [Antflow-Designer](https://gitcode.com/ldhnet/FlowDesigner/overview) | 
+| 成品项目 | [Antflow](https://gitee.com/tylerzhou/Antflow) | [Antflow](https://github.com/mrtylerzhou/Antflow) | [Antflow](https://gitcode.com/zypqqgc/Antflow/overview) |
 
 #### 项目运行 node14.20.1 以上版本
-> 1.下载项目 git clone https://gitee.com/ldhnet/AntFlow-Designer.git
+> 1.下载项目 git clone https://gitee.com/ldhnet/Antflow-Designer.git
 
 > 2.环境依赖  `npm  install --registry=https://registry.npmmirror.com`
 
@@ -59,8 +59,8 @@
 😀 你可以请作者喝杯咖啡表示鼓励
 <table>
     <tr>
-        <td><img src="https://gitee.com/ldhnet/AntFlow-Designer/raw/master/public/images/wxpay.jpg"/></td>
-        <td><img src="https://gitee.com/ldhnet/AntFlow-Designer/raw/master/public/images/alipay.jpg"/></td>
+        <td><img src="https://gitee.com/ldhnet/Antflow-Designer/raw/master/public/images/wxpay.jpg"/></td>
+        <td><img src="https://gitee.com/ldhnet/Antflow-Designer/raw/master/public/images/alipay.jpg"/></td>
     </tr>  
 </table>
 
