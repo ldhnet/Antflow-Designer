@@ -14,8 +14,9 @@
                 </div>
             </div>
         </section>
-
     </div>
+    <ToolBar/>
+
     <errorDialog v-model:visible="tipVisible" :list="tipList" />
     <promoterDrawer />
     <approverDrawer :directorMaxLevel="directorMaxLevel" />
@@ -32,6 +33,9 @@ import promoterDrawer from "@/components/drawer/promoterDrawer.vue";
 import approverDrawer from "@/components/drawer/approverDrawer.vue";
 import copyerDrawer from "@/components/drawer/copyerDrawer.vue";
 import conditionDrawer from "@/components/drawer/conditionDrawer.vue";
+import ToolBar from "@/components/Process/toolbar.vue";
+
+
 
 let { setFlowId, setIsTried } = useStore()
 const emit = defineEmits(['nextChange']) 
@@ -140,10 +144,19 @@ const getData = () => {
         resolve({ formData: resData})
     })
 };
+
+const handleButtonClick = () => {
+    console.log('按钮点击');
+};
+
 defineExpose({
     getData
 })
 </script>
+
 <style lang="css" scoped>
+.my-nav-content {
+    padding-bottom: 60px; /* 确保内容不会被托盘遮挡 */
+}
 
 </style>

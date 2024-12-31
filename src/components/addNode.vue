@@ -1,6 +1,6 @@
 <template>
     <div class="add-node-btn-box">
-        <div class="add-node-btn">
+        <div class="add-node-btn" @dragover="handleDragOver" @drop="handleDropDown" @dragleave="handleDragLeave">
             <el-popover placement="right-start" v-model="visible" width="auto">
                 <div class="add-node-popover-body">
                     <a class="add-node-popover-item approver" @click="addType(4)">
@@ -58,6 +58,36 @@ const addType = (type)=> {
         let gatewayNode= NodeUtils.createGatewayNode(props.childNodeP); 
         emits("update:childNodeP", gatewayNode)
     }
+}
+const handleDragOver = (e) =>{
+    e.preventDefault();
+    e.target.style.opacity = 0.6;
+    //console.log("detected dragOver event");
+}
+const handleDragLeave = (e)=>{
+    e.preventDefault();
+    e.target.style.opacity = 1.0;
+    //console.log("detected dragOver event");
+}
+const handleDropDown = (e)=>{
+    e.preventDefault();
+    const draggedClass = e.dataTransfer.getData('text');
+    switch (draggedClass) {
+        case "add-node-popover-item approver":
+            addType(4);
+            break;
+        case "add-node-popover-item notifier":
+            addType(5);
+            break;
+        case "add-node-popover-item condition":
+            addType(2);
+            break;
+        default:
+            console("unknown dragged icon");
+            break;
+    }
+    e.target.style.opacity = 1.0;
+
 }
 </script>
 <style lang="css" scoped>
