@@ -14,7 +14,7 @@
             <input
               v-if="isInput"
               type="text"
-              class="ant-input editable-title-input"
+              class="flow-input editable-title-input"
               @blur="blurEvent()"
               @focus="$event.currentTarget.select()"
               v-focus
@@ -22,7 +22,7 @@
               :placeholder="defaultText"
             />
             <span v-else class="editable-title" @click="clickEvent()">{{ nodeConfig.nodeName }}</span>
-            <i class="anticon anticon-close close" @click="delNode"></i>
+            <i class="flowicon flowicon-close close" @click="delNode"></i>
           </template>
         </div>
         <div class="content" @click="setPerson">
@@ -30,10 +30,10 @@
               <span class="placeholder" v-if="!showText">请选择{{defaultText}}</span>
               {{showText}}
           </div>
-          <i class="anticon anticon-right arrow"></i>
+          <i class="flowicon flowicon-right arrow"></i>
         </div>
         <div class="error_tip" v-if="isTried && nodeConfig.error">
-          <i class="anticon anticon-exclamation-circle"></i>
+          <i class="flowicon flowicon-exclamation-circle"></i>
         </div>
     </div>
     <addNode v-model:childNodeP="nodeConfig.childNode" />
@@ -51,7 +51,7 @@
                   <input
                     v-if="isInputList[index]"
                     type="text"
-                    class="ant-input editable-title-input"
+                    class="flow-input editable-title-input"
                     @blur="blurEvent(index)"
                     @focus="$event.currentTarget.select()"
                     v-focus
@@ -59,12 +59,12 @@
                   />
                   <span v-else class="editable-title" @click="clickEvent(index)">{{ item.nodeName }}</span>
                   <span class="priority-title" @click="setPerson(item.priorityLevel)">优先级{{ item.priorityLevel }}</span>
-                  <i class="anticon anticon-close close" @click="delTerm(index)"></i>
+                  <i class="flowicon flowicon-close close" @click="delTerm(index)"></i>
                 </div>
                 <div class="sort-right" v-if="index != nodeConfig.conditionNodes.length - 1" @click="arrTransfer(index)">&gt;</div>
                 <div class="content" @click="setPerson(item.priorityLevel)">{{ $func.conditionStr(nodeConfig, index) }}</div>
                 <div class="error_tip" v-if="isTried && item.error">
-                    <i class="anticon anticon-exclamation-circle"></i>
+                    <i class="flowicon flowicon-exclamation-circle"></i>
                 </div>
               </div>
               <addNode v-model:childNodeP="item.childNode" />

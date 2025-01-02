@@ -47,7 +47,7 @@
     content: '';
 }
 
-.anticon {
+.flowicon {
     display: inline-block;
     font-style: normal;
     vertical-align: baseline;
@@ -59,40 +59,40 @@
     -moz-osx-font-smoothing: grayscale
 }
 
-.anticon:before {
+.flowicon:before {
     display: block;
-    font-family: anticon !important
+    font-family: flow !important
 }
 
-.anticon-close:before {
+.flowicon-close:before {
     /*"\E633" */
     content:  url("../assets/images/add-close1.png");
 }
 
-.anticon-right:before {
+.flowicon-right:before {
     content:  url("../assets/images/jiaojiao.png");
 }
 
-.anticon-exclamation-circle {
+.flowicon-exclamation-circle {
     color: rgb(242, 86, 67)
 }
 
-.anticon-exclamation-circle:before { 
+.flowicon-exclamation-circle:before { 
     content:  url("../assets/images/warning.png");
 }
 
-.anticon-left:before {
+.flowicon-left:before {
     content:  url("../assets/images/jiaojiao1.png");
 }
 
-.anticon-close-circle:before {
+.flowicon-close-circle:before {
     content:  url("../assets/images/cancel.png");
 }
 
-.anticon-delete:before {
+.flowicon-delete:before {
     content:  url("../assets/images/delete.png");
 }
-.ant-btn {
+.flow-btn {
     line-height: 1.5;
     display: inline-block;
     font-weight: 400;
@@ -114,21 +114,21 @@
     border-color: #d9d9d9
 }
 
-.ant-btn>.anticon {
+.flow-btn>.flowicon {
     line-height: 1
 }
 
-.ant-btn,
-.ant-btn:active,
-.ant-btn:focus {
+.flow-btn,
+.flow-btn:active,
+.flow-btn:focus {
     outline: 0
 }
 
-.ant-btn>a:only-child {
+.flow-btn>a:only-child {
     color: currentColor
 }
 
-.ant-btn>a:only-child:after {
+.flow-btn>a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -138,20 +138,20 @@
     background: transparent
 }
 
-.ant-btn:focus,
-.ant-btn:hover {
+.flow-btn:focus,
+.flow-btn:hover {
     color: #40a9ff;
     background-color: #fff;
     border-color: #40a9ff
 }
 
-.ant-btn:focus>a:only-child,
-.ant-btn:hover>a:only-child {
+.flow-btn:focus>a:only-child,
+.flow-btn:hover>a:only-child {
     color: currentColor
 }
 
-.ant-btn:focus>a:only-child:after,
-.ant-btn:hover>a:only-child:after {
+.flow-btn:focus>a:only-child:after,
+.flow-btn:hover>a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -161,20 +161,20 @@
     background: transparent
 }
 
-.ant-btn.active,
-.ant-btn:active {
+.flow-btn.active,
+.flow-btn:active {
     color: #096dd9;
     background-color: #fff;
     border-color: #096dd9
 }
 
-.ant-btn.active>a:only-child,
-.ant-btn:active>a:only-child {
+.flow-btn.active>a:only-child,
+.flow-btn:active>a:only-child {
     color: currentColor
 }
 
-.ant-btn.active>a:only-child:after,
-.ant-btn:active>a:only-child:after {
+.flow-btn.active>a:only-child:after,
+.flow-btn:active>a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -184,20 +184,20 @@
     background: transparent
 }
 
-.ant-btn.active,
-.ant-btn:active,
-.ant-btn:focus,
-.ant-btn:hover {
+.flow-btn.active,
+.flow-btn:active,
+.flow-btn:focus,
+.flow-btn:hover {
     background: #fff;
     text-decoration: none
 }
 
-.ant-btn>i,
-.ant-btn>span {
+.flow-btn>i,
+.flow-btn>span {
     pointer-events: none
 }
 
-.ant-btn:before {
+.flow-btn:before {
     position: absolute;
     top: -1px;
     left: -1px;
@@ -213,17 +213,17 @@
     display: none
 }
 
-.ant-btn .anticon {
+.flow-btn .flowicon {
     transition: margin-left .3s cubic-bezier(.645, .045, .355, 1)
 }
 
-.ant-btn:active>span,
-.ant-btn:focus>span {
+.flow-btn:active>span,
+.flow-btn:focus>span {
     position: relative
 }
 
-.ant-btn>.anticon+span,
-.ant-btn>span+.anticon {
+.flow-btn>.flowicon+span,
+.flow-btn>span+.flowicon {
     margin-left: 8px
 }
 
@@ -282,7 +282,7 @@
     background: #fff
 }
 
-.ant-input {
+.flow-input {
     font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-variant: tabular-nums;
     box-sizing: border-box;
@@ -304,31 +304,31 @@
     transition: all .3s
 }
 
-.ant-input::-moz-placeholder {
+.flow-input::-moz-placeholder {
     color: #bfbfbf;
     opacity: 1
 }
 
-.ant-input:-ms-input-placeholder {
+.flow-input:-ms-input-placeholder {
     color: #bfbfbf
 }
 
-.ant-input::-webkit-input-placeholder {
+.flow-input::-webkit-input-placeholder {
     color: #bfbfbf
 }
 
-.ant-input:focus,
-.ant-input:hover {
+.flow-input:focus,
+.flow-input:hover {
     border-color: #40a9ff;
     border-right-width: 1px !important
 }
 
-.ant-input:focus {
+.flow-input:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, .2)
 }
 
-textarea.ant-input {
+textarea.flow-input {
     max-width: 100%;
     height: auto;
     vertical-align: bottom;
@@ -393,7 +393,7 @@ textarea.ant-input {
     background: #1583f2
 }
 
-.my-nav .my-nav-back .anticon {
+.my-nav .my-nav-back .flowicon {
     line-height: 60px
 }
 
@@ -419,14 +419,14 @@ textarea.ant-input {
     border-color: #fff
 }
 
-.my-nav .button-publish.ant-btn:focus,
-.my-nav .button-publish.ant-btn:hover {
+.my-nav .button-publish.flow-btn:focus,
+.my-nav .button-publish.flow-btn:hover {
     color: #3296fa;
     border-color: #fff;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3)
 }
 
-.my-nav .button-publish.ant-btn:active {
+.my-nav .button-publish.flow-btn:active {
     color: #3296fa;
     background: #d6eaff;
     box-shadow: none
@@ -441,14 +441,14 @@ textarea.ant-input {
     background: transparent
 }
 
-.my-nav .button-preview.ant-btn:focus,
-.my-nav .button-preview.ant-btn:hover {
+.my-nav .button-preview.flow-btn:focus,
+.my-nav .button-preview.flow-btn:hover {
     color: #fff;
     border-color: #fff;
     background: #59acfc
 }
 
-.my-nav .button-preview.ant-btn:active {
+.my-nav .button-preview.flow-btn:active {
     color: #fff;
     border-color: #fff;
     background: #2186ef
@@ -468,7 +468,7 @@ textarea.ant-input {
 
 .error-modal-desc {
     font-size: 13px;
-    color: rgba(25, 31, 37, .56);
+    color: red;
     line-height: 22px;
     margin-bottom: 14px
 }
@@ -502,7 +502,7 @@ textarea.ant-input {
     text-align: right;
     flex: 1;
     font-size: 13px;
-    color: #191f25
+    color: red
 }
 
 #body.blur {
@@ -603,7 +603,7 @@ textarea.ant-input {
     text-decoration: none
 }
 
-.ant-btn {
+.flow-btn {
     position: relative
 }
 
@@ -1120,6 +1120,6 @@ textarea.ant-input {
     background: #fff
 }
 
-.ant-btn {
+.flow-btn {
     position: relative
 }

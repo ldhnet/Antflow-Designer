@@ -60,10 +60,10 @@
                             </p>
                         </div>
                         <a v-if="item.type==1" @click="conditionConfig.nodeApproveList= [];$func.removeEle(conditionConfig.conditionList,item,'formId')">
-                            <i class="anticon anticon-delete" style="color: #f00;"></i>
+                            <i class="flowicon flowicon-delete" style="color: #f00;"></i>
                         </a>
                         <a v-if="item.type==2" @click="$func.removeEle(conditionConfig.conditionList,item,'formId')">
-                            <i class="anticon anticon-delete" style="color: #f00;"></i>
+                            <i class="flowicon flowicon-delete" style="color: #f00;"></i>
                         </a>
                     </li>
                 </ul>

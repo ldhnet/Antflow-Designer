@@ -6,10 +6,10 @@
 -->
 <template>
   <el-dialog title="提示" v-model="visibleDialog" :width="520">
-    <div class="ant-confirm-body">
-      <i class="anticon anticon-close-circle" style="color: #f00;"></i>
-      <span class="ant-confirm-title">当前无法发布</span>
-      <div class="ant-confirm-content">
+    <div class="flow-confirm-body">
+      <i class="flowicon flowicon-exclamation-circle" style="color: #f00;"></i>
+      <span class="flow-confirm-title">当前无法发布</span>
+      <div class="flow-confirm-content">
         <div>
           <p class="error-modal-desc">以下内容不完善，需进行修改</p>
           <div class="error-modal-list">
@@ -53,25 +53,28 @@ let visibleDialog = computed({
 </script>
 
 <style lang="css" scoped>
-.ant-confirm-body .ant-confirm-title {
+.flow-confirm-body .flow-confirm-title {
   color: rgba(0, 0, 0, .85);
-  font-weight: 500;
+  font-weight: 700;
+  margin-top: 10px;
   font-size: 16px;
   line-height: 1.4;
   display: block;
   overflow: hidden
 }
 
-.ant-confirm-body .ant-confirm-content {
+.flow-confirm-body .flow-confirm-content {
   margin-left: 38px;
   font-size: 14px;
-  color: rgba(0, 0, 0, .65);
+  color: red;
   margin-top: 8px
 }
 
-.ant-confirm-body>.anticon {
+.flow-confirm-body>.flowicon {
   font-size: 22px;
   margin-right: 16px;
-  float: left
+  float: left;
+  margin-left: 30px;
+  margin-top: 2px;
 }
 </style>
