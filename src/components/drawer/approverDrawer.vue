@@ -48,8 +48,7 @@
                                 @click="approverConfig.nodeApproveList = []">清除</a>
                         </p>
                     </div>
-                    <div class="approver_btn" v-show="approverConfig.setType == 4">
-
+                    <div class="approver_btn" v-show="approverConfig.setType == 4"> 
                         <el-button type="primary" @click="addRoleApprover">添加/修改部门</el-button>
                         <p class="selected_list">
                             <span v-for="(item, index) in approverConfig.nodeApproveList" :key="index">{{ item.name

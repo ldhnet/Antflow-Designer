@@ -11,22 +11,9 @@ export class FormatUtils {
     static formatSettings(param) {
         let treeList = this.flattenMapTreeToList(param);
         let combinationList = this.getEndpointNodeId(treeList);
-        let finalList = this.cleanNodeList(combinationList);
+        let finalList = this.cleanNodeList(combinationList); 
         let fomatList = this.adapterActivitiNodeList(finalList);
-        return fomatList;
-        // let finalObj = {
-        //     bpmnCode: "SFZHSQ-00011",
-        //     bpmnName: "合同审批", //name 改成 bpmnName 其他的都是添加的
-        //     bpmnType: null,
-        //     formCode: "PROJECT_" + NodeUtils.idGenerator(),
-        //     appId: null,
-        //     deduplicationType: 2,//2去重,1不去重
-        //     effectiveStatus: 1,
-        //     remark: "合同审批",
-        //     isDel: 0,
-        //     nodes: fomatList
-        // }
-        // return finalObj;
+        return fomatList; 
     }
     /**
     * 展平树结构
@@ -138,6 +125,7 @@ export class FormatUtils {
      * @returns 
      */
     static adapterActivitiNodeList(nodeList) {
+
         for (let node of nodeList) {
             if (node.hasOwnProperty('id')) {
                 delete node.id;
@@ -153,17 +141,26 @@ export class FormatUtils {
                 delete node.conditionList;
             }
 
-            if (node.nodeType == 4 || node.nodeType == 5) {
+            if (node.nodeType == 4 || node.nodeType == 6) { 
                 let approveObj = {
                     emplIds: [],
+                    emplList: [],
+                    roleIds: [],
+                    roleList: [],
+                    hrbpConfType: 0,
+                    assignLevelGrade: 0,
                     signType: node.signType,
                 }
-                if (node.nodeApproveList && !isEmptyArray(node.nodeApproveList)) {
+                if (node.nodeApproveList && !isEmptyArray(node.nodeApproveList)) { 
                     for (let approve of node.nodeApproveList) {
+                        let emp={};
+                        emp.id=parseInt(approve.targetId);
+                        emp.name=approve.name;
                         approveObj.emplIds.push(parseInt(approve.targetId));
+                        approveObj.emplList.push(emp);
                     }
                 }
-                node.nodeProperty = node.setType == 1 ? 5 : node.setType;
+                node.nodeProperty = node.setType;
                 node.property = approveObj;
                 delete node.nodeApproveList;
             }

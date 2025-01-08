@@ -43,11 +43,15 @@ export function getWorkFlowData(data) {
   return http.get(`${baseUrl}data.json`, { params: data })
 }
 /**
- * 设置审批数据
+ * 流程设计 提交到后端
  * @param {*} data 
  * @returns 
  */
 export function setWorkFlowData(data) {
-  return http.post(`${baseUrl}`, data)
+  const headers = {
+    "Userid": 1,
+    "Username": '%E5%BC%A0%E4%B8%89'
+  } 
+  return http.post(`http://117.72.70.166:7001/bpmnConf/edit`, data, { headers })
 }
  

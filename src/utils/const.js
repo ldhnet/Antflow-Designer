@@ -8,7 +8,7 @@
 export let bgColors = ["", '87, 106, 149', '', '', '255, 148, 62', '50, 150, 250']
 export let placeholderList = ["发起人", "审核人", "抄送人"];
 
-export let nodeTypeList = ["未知", "发起人", "网关", "条件", "审核人", "抄送人"];
+export let nodeTypeList = ["未知", "发起人", "网关", "条件", "审核人", "抄送人", "抄送人"];
 
 export let setTypes = [
   { value: 1, label: '指定成员' },

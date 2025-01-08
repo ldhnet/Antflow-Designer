@@ -14,7 +14,6 @@
                 </div>
             </div>
         </section>
-
     </div>
     <errorDialog v-model:visible="tipVisible" :list="tipList" />
     <promoterDrawer />
@@ -68,7 +67,7 @@ onMounted(async () => {
 /** 节点验证 */
 const validateErr = ({ childNode }) => {
     if (childNode) {
-        let { nodeType, error, nodeName, conditionNodes } = childNode;
+        let { nodeType, error, nodeName, conditionNodes } = childNode; 
         if (nodeType == 1) {
             validateErr(childNode);
         }
@@ -84,7 +83,7 @@ const validateErr = ({ childNode }) => {
         else if (nodeType == 3) {
             validateErr(childNode);
         }
-        else if (nodeType == 4 || nodeType == 5) {
+        else if (nodeType == 4 || nodeType == 6) {
             if (error) {
                 tipList.value.push({
                     name: nodeName,
@@ -115,7 +114,7 @@ const zoomSize = (type) => {
 const getJson = () => {
     setIsTried(true); 
     let isApproveNode = preTreeIsApproveNode(nodeConfig.value); 
-    if (!nodeConfig.value || !nodeConfig.value.childNode || !isApproveNode) {
+    if (!nodeConfig.value || !nodeConfig.value.childNode || !isApproveNode) { 
         emit('nextChange', { label: "流程设计", key: "processDesign" }); 
         return false;
     }  
@@ -131,9 +130,9 @@ const getJson = () => {
 };
 
 // 给父级页面提供得获取本页数据得方法
-const getData = () => {
-    let resData = getJson();
+const getData = () => { 
     return new Promise((resolve, reject) => {
+        let resData = getJson(); 
         if (!resData) { 
             reject({ formData: null });
         }

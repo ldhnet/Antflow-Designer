@@ -83,7 +83,7 @@ export class FormatDisplayUtils {
                 delete node.property;
             }
 
-            if (node.nodeType == 4 || node.nodeType == 5) {
+            if (node.nodeType == 4 || node.nodeType == 6) {
                 let empList = [];
                 if (node.property && !isEmptyArray(node.property.emplList)) {
                     for (let emp of node.property.emplList) {
@@ -93,13 +93,11 @@ export class FormatDisplayUtils {
                             name: emp.name
                         };
                         empList.push(approveObj);
-                    }
-
+                    } 
                     Object.assign(node, { signType: node.property.signType });
                 }
-                node.setType = node.nodeProperty == 5 ? 1 : node.nodeProperty;
-                Object.assign(node, { nodeApproveList: [] });
-
+                node.setType = node.nodeProperty;
+                Object.assign(node, { nodeApproveList: [] }); 
                 node.nodeApproveList = empList;
                 delete node.property;
             }

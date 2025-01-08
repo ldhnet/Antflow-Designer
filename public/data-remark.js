@@ -12,7 +12,7 @@ export default {
             "nodeId": "Gb2", //节点Id
             "nodeName": "发起人66",//节点标题
             "nodeDisplayName": "发起人66",//节点显示
-            "nodeType": 1,// 1发起人 2 网关 3条件 4审批 6抄送人
+            "nodeType": 1,// 1发起人 2 网关 3条件 4审批 6抄送人  5暂时未用到
             "nodeFrom": "",  
             "nodeTo": [],
             "priorityLevel": "",// 条件优先级

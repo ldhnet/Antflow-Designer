@@ -104,7 +104,7 @@ const form = reactive({
     bpmnCode: generatorID,
     bpmnType: null,
     flowGroup: 1,
-    formCode: generatorID,
+    formCode: null,
     remark: '',
     effectiveStatus: true,
     deduplicationType: 1
@@ -119,7 +119,7 @@ onMounted(async () => {
         form.bpmnName = props.basicData.bpmnName;
         form.bpmnCode = generatorID;
         form.bpmnType = props.basicData.bpmnType;
-        form.formCode = generatorID;
+        form.formCode = props.basicData.formCode;
         form.remark = props.basicData.remark;
         form.effectiveStatus = props.basicData.effectiveStatus;
         form.deduplicationType = props.basicData.deduplicationType;

@@ -48,31 +48,26 @@ import { ref, onMounted, computed } from "vue";
 import { ElMessage } from 'element-plus';
 import { FormatUtils } from '@/utils/formatcommit_data';
 import { NodeUtils } from '@/utils/nodeUtils';
+import { setWorkFlowData } from '@/api/index';
 import { FormatDisplayUtils } from '@/utils/formatdisplay_data';
 import { showLoading, closeLoading } from '@/utils/loading';
-
 const basicSettingDesign = ref(null);
 const formDesign = ref(null);
 const processDesign = ref(null);
-
 let activeStep = ref("basicSettingDesign"); // 激活的步骤面板
-
 let steps = ref([
     { label: "基础设置", key: "basicSettingDesign" },
     { label: "表单设计", key: "formDesign" },
     { label: "流程设计", key: "processDesign" },
 ]);
-
 let translateX = computed({
     get() {
         return `translateX(${(steps.value.findIndex(t => t.key === activeStep.value) - 1) * 100}%)`
     }
 })
-
 const changeSteps = (item) => {
     activeStep.value = item.key;
 };
-
 let processConfig = ref(null);
 let nodeConfig = ref(null);
 let title = ref('');
@@ -95,14 +90,14 @@ const publish = () => {
             ElMessage.success("设置成功,F12控制台查看数据");
             let basicData = res[0].formData;
             let formData = res[1].formData;
-            Object.assign(basicData, { formData: formData });
-            var nodes = FormatUtils.formatSettings(res[2].formData);
+            Object.assign(basicData, { formData: formData }); 
+            var nodes = FormatUtils.formatSettings(res[2].formData); 
             Object.assign(basicData, { nodes: nodes });
             return basicData;
         })
         .then((data) => {
             console.log("提交到API=data================================", JSON.stringify(data));
-            // setApiWorkFlowData(data).then((resLog) => {
+            // setWorkFlowData(data).then((resLog) => {
             //     if (resLog.code == 200) { 
             //         console.log("提交到API返回成功"); 
             //     }else {
