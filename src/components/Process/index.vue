@@ -1,12 +1,12 @@
 <template>
     <div class="my-nav-content">
-        <section class="dingflow-design">
+        <section class="dingflow-design" ref="dingflowDesignRef">
             <div class="zoom">
-                <div class="zoom-out" :class="nowVal == 50 && 'disabled'" @click="zoomSize(1)"></div>
+                <div class="zoom-out" @click="zoomOut"></div>
                 <span>{{ nowVal }}%</span>
-                <div class="zoom-in" :class="nowVal == 300 && 'disabled'" @click="zoomSize(2)"></div>
+                <div class="zoom-in" @click="zoomIn"></div>
             </div>
-            <div class="box-scale" :style="`transform: scale(${nowVal / 100});`">
+            <div class="box-scale" ref="boxScaleRef">
                 <nodeWrap v-model:nodeConfig="nodeConfig" />
                 <div class="end-node">
                     <div class="end-node-circle"></div>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue' 
+import { ref, onMounted } from 'vue'
 import { useStore } from '@/stores/index'
 import { nodeTypeList } from '@/utils/const'
 import errorDialog from "@/components/dialog/errorDialog.vue";
@@ -31,9 +31,10 @@ import promoterDrawer from "@/components/drawer/promoterDrawer.vue";
 import approverDrawer from "@/components/drawer/approverDrawer.vue";
 import copyerDrawer from "@/components/drawer/copyerDrawer.vue";
 import conditionDrawer from "@/components/drawer/conditionDrawer.vue";
+import {wheelZoomFunc, zoomInit} from "@/utils/zoom.js";
 
 let { setFlowId, setIsTried } = useStore()
-const emit = defineEmits(['nextChange']) 
+const emit = defineEmits(['nextChange'])
 let props = defineProps({
     processData: {
         type: Object,
@@ -41,33 +42,40 @@ let props = defineProps({
     }
 });
 
+const dingflowDesignRef = ref(null);
+const boxScaleRef = ref(null);
 let tipList = ref([]);
 let tipVisible = ref(false);
-let nowVal = ref(100); 
-let nodeConfig = ref({}); 
-let directorMaxLevel = ref(3); 
+let nowVal = ref(100);
+let nodeConfig = ref({});
+let directorMaxLevel = ref(3);
 onMounted(async () => {
     if(props.processData){
         nodeConfig.value = props.processData;
-    } 
+    }
+
+  zoomInit(dingflowDesignRef, boxScaleRef, (val) => {
+    console.log(val)
+    nowVal.value = val
+  })
 });
 /**
  * 判断流程中是否有审批节点
- * @param treeNode 
+ * @param treeNode
  */
- const preTreeIsApproveNode = (treeNode) =>  { 
-  if(!treeNode) return false;  
-  if(treeNode.nodeType == 4) { 
+ const preTreeIsApproveNode = (treeNode) =>  {
+  if(!treeNode) return false;
+  if(treeNode.nodeType == 4) {
     return true;
   }
   else{
     return preTreeIsApproveNode(treeNode.childNode);
-  } 
+  }
 }
 /** 节点验证 */
 const validateErr = ({ childNode }) => {
     if (childNode) {
-        let { nodeType, error, nodeName, conditionNodes } = childNode; 
+        let { nodeType, error, nodeName, conditionNodes } = childNode;
         if (nodeType == 1) {
             validateErr(childNode);
         }
@@ -96,28 +104,37 @@ const validateErr = ({ childNode }) => {
         childNode = null;
     }
 };
-/** 页面显示比例 */
-const zoomSize = (type) => {
-    if (type == 1) {
-        if (nowVal.value == 50) {
-            return;
-        }
-        nowVal.value -= 10;
-    } else {
-        if (nowVal.value == 300) {
-            return;
-        }
-        nowVal.value += 10;
-    }
-};
+
+/** 页面放大 */
+function zoomIn() {
+  wheelZoomFunc({scaleFactor: parseInt(nowVal.value) / 100 + 0.1, isExternalCall: true})
+}
+
+/** 页面缩小 */
+function zoomOut() {
+  wheelZoomFunc({scaleFactor: parseInt(nowVal.value) / 100 - 0.1, isExternalCall: true})
+}
+// const zoomSize = (type) => {
+//     if (type == 1) {
+//         if (nowVal.value == 50) {
+//             return;
+//         }
+//         nowVal.value -= 10;
+//     } else {
+//         if (nowVal.value == 300) {
+//             return;
+//         }
+//         nowVal.value += 10;
+//     }
+// };
 
 const getJson = () => {
-    setIsTried(true); 
-    let isApproveNode = preTreeIsApproveNode(nodeConfig.value); 
-    if (!nodeConfig.value || !nodeConfig.value.childNode || !isApproveNode) { 
-        emit('nextChange', { label: "流程设计", key: "processDesign" }); 
+    setIsTried(true);
+    let isApproveNode = preTreeIsApproveNode(nodeConfig.value);
+    if (!nodeConfig.value || !nodeConfig.value.childNode || !isApproveNode) {
+        emit('nextChange', { label: "流程设计", key: "processDesign" });
         return false;
-    }  
+    }
     tipList.value = [];
     validateErr(nodeConfig.value);
     if (tipList.value.length != 0) {
@@ -125,15 +142,15 @@ const getJson = () => {
         tipVisible.value = true;
         return false;
     }
-    let submitData = JSON.parse(JSON.stringify(nodeConfig.value)); 
+    let submitData = JSON.parse(JSON.stringify(nodeConfig.value));
     return submitData;
 };
 
 // 给父级页面提供得获取本页数据得方法
-const getData = () => { 
+const getData = () => {
     return new Promise((resolve, reject) => {
-        let resData = getJson(); 
-        if (!resData) { 
+        let resData = getJson();
+        if (!resData) {
             reject({ formData: null });
         }
         resolve({ formData: resData})

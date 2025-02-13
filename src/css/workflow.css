@@ -77,7 +77,7 @@
     color: rgb(242, 86, 67)
 }
 
-.flowicon-exclamation-circle:before { 
+.flowicon-exclamation-circle:before {
     content:  url("../assets/images/warning.png");
 }
 
@@ -462,8 +462,9 @@ textarea.flow-input {
     bottom: 0;
     z-index: 1;
     overflow-x: hidden;
-    overflow-y: auto;
-    padding-bottom: 30px
+    overflow-y: hidden;
+    padding-bottom: 30px;
+    height:100%;
 }
 
 .error-modal-desc {
@@ -785,12 +786,15 @@ textarea.flow-input {
 .dingflow-design {
     width: 100%;
     background-color: #f5f5f7;
-    overflow: auto;
+    overflow: hidden;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0
+    top: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dingflow-design .box-scale {
@@ -811,7 +815,7 @@ textarea.flow-input {
     min-width: -moz-min-content;
     min-width: min-content;
     background-color: #f5f5f7;
-    transform-origin: 50% 0px 0px;
+    /*transform-origin: 50% 0px 0px;*/
 }
 
 .dingflow-design .node-wrap {
