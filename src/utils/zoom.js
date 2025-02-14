@@ -50,6 +50,23 @@ export function zoomInit(dom1, dom2, cb) {
     });
 }
 
+/**
+ * 重置大小和位置
+ **/
+export function resetImage() {
+    scale = 1;
+    translateX = 0
+    translateY = 0;
+    isDragging = false;
+    startX = null
+    startY = null;
+    target.style.transform = "translate3d(0px, 0px, 0px) scale(1)";
+}
+
+/**
+ * 更新目标元素的变换属性
+ * 该函数用于更新目标元素的CSS变换属性，包括平移和缩放。
+ */
 function updateTransform() {
     target.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }

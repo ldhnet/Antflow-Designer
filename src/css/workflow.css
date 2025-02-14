@@ -66,11 +66,11 @@
 
 .flowicon-close:before {
     /*"\E633" */
-    content:  url("../assets/images/add-close1.png");
+    content: url("../assets/images/add-close1.png");
 }
 
 .flowicon-right:before {
-    content:  url("../assets/images/jiaojiao.png");
+    content: url("../assets/images/jiaojiao.png");
 }
 
 .flowicon-exclamation-circle {
@@ -78,20 +78,21 @@
 }
 
 .flowicon-exclamation-circle:before {
-    content:  url("../assets/images/warning.png");
+    content: url("../assets/images/warning.png");
 }
 
 .flowicon-left:before {
-    content:  url("../assets/images/jiaojiao1.png");
+    content: url("../assets/images/jiaojiao1.png");
 }
 
 .flowicon-close-circle:before {
-    content:  url("../assets/images/cancel.png");
+    content: url("../assets/images/cancel.png");
 }
 
 .flowicon-delete:before {
-    content:  url("../assets/images/delete.png");
+    content: url("../assets/images/delete.png");
 }
+
 .flow-btn {
     line-height: 1.5;
     display: inline-block;
@@ -114,7 +115,7 @@
     border-color: #d9d9d9
 }
 
-.flow-btn>.flowicon {
+.flow-btn > .flowicon {
     line-height: 1
 }
 
@@ -124,11 +125,11 @@
     outline: 0
 }
 
-.flow-btn>a:only-child {
+.flow-btn > a:only-child {
     color: currentColor
 }
 
-.flow-btn>a:only-child:after {
+.flow-btn > a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -145,13 +146,13 @@
     border-color: #40a9ff
 }
 
-.flow-btn:focus>a:only-child,
-.flow-btn:hover>a:only-child {
+.flow-btn:focus > a:only-child,
+.flow-btn:hover > a:only-child {
     color: currentColor
 }
 
-.flow-btn:focus>a:only-child:after,
-.flow-btn:hover>a:only-child:after {
+.flow-btn:focus > a:only-child:after,
+.flow-btn:hover > a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -168,13 +169,13 @@
     border-color: #096dd9
 }
 
-.flow-btn.active>a:only-child,
-.flow-btn:active>a:only-child {
+.flow-btn.active > a:only-child,
+.flow-btn:active > a:only-child {
     color: currentColor
 }
 
-.flow-btn.active>a:only-child:after,
-.flow-btn:active>a:only-child:after {
+.flow-btn.active > a:only-child:after,
+.flow-btn:active > a:only-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -192,8 +193,8 @@
     text-decoration: none
 }
 
-.flow-btn>i,
-.flow-btn>span {
+.flow-btn > i,
+.flow-btn > span {
     pointer-events: none
 }
 
@@ -217,13 +218,13 @@
     transition: margin-left .3s cubic-bezier(.645, .045, .355, 1)
 }
 
-.flow-btn:active>span,
-.flow-btn:focus>span {
+.flow-btn:active > span,
+.flow-btn:focus > span {
     position: relative
 }
 
-.flow-btn>.flowicon+span,
-.flow-btn>span+.flowicon {
+.flow-btn > .flowicon + span,
+.flow-btn > span + .flowicon {
     margin-left: 8px
 }
 
@@ -351,7 +352,7 @@ textarea.flow-input {
     align-items: center
 }
 
-.my-nav>* {
+.my-nav > * {
     flex: 1;
     width: 100%
 }
@@ -464,7 +465,7 @@ textarea.flow-input {
     overflow-x: hidden;
     overflow-y: hidden;
     padding-bottom: 30px;
-    height:100%;
+    height: 100%;
 }
 
 .error-modal-desc {
@@ -521,7 +522,7 @@ textarea.flow-input {
     -ms-flex-pack: justify;
     justify-content: space-between;
     height: 40px;
-    width: 125px;
+    /*width: 125px;*/
     right: 40px;
     margin-top: 30px;
     z-index: 10
@@ -552,6 +553,22 @@ textarea.flow-input {
 
 .zoom .zoom-in.disabled {
     opacity: .5
+}
+
+.zoom-reset {
+    color: #595D62;
+    font-weight: bold;
+    padding: 2px 7px;
+    background: #ffffff;
+    border: 1px solid #E3E4E4;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.zoom > span {
+    text-align: center;
+    width: 39px;
+    margin: 0 10px;
 }
 
 .auto-judge:hover .editable-title,
