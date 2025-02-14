@@ -117,20 +117,6 @@ function zoomReset() {
   resetImage()
 }
 
-// const zoomSize = (type) => {
-//     if (type == 1) {
-//         if (nowVal.value == 50) {
-//             return;
-//         }
-//         nowVal.value -= 10;
-//     } else {
-//         if (nowVal.value == 300) {
-//             return;
-//         }
-//         nowVal.value += 10;
-//     }
-// };
-
 const getJson = () => {
   setIsTried(true);
   let isApproveNode = preTreeIsApproveNode(nodeConfig.value);
