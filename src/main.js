@@ -8,32 +8,29 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router'; 
-import ElementPlus from 'element-plus' /* 引入 ElementPlus */
-import 'element-plus/dist/index.css'
-import "./css/base.css";
-import "./css/workflow.css";
-import './assets/main.css'; 
-import './css/override-element-ui.css';
-// import 'element-plus/es/components/message/style/css' ;
-// import "element-plus/theme-chalk/el-message-box.css"; 
+import ElementPlus from 'element-plus'; 
+import 'element-plus/dist/index.css';
+import "./assets/css/base.css";
+import "./assets/css/workflow.css"; 
+import './assets/css/override-element-ui.css'; 
 import { parseTime,goBack } from "@/utils/hsharpUtils";
 
-import VForm3 from '@/./lib/vform/designer.umd.js'
-import './lib/vform/designer.style.css'
+import VForm3 from '@/./lib/vform/designer.umd.js';
+import './lib/vform/designer.style.css';
 
-const app = createApp(App).use(createPinia()).use(router)
-app.use(ElementPlus)
-app.use(VForm3)
-app.mount('#app')
+const app = createApp(App).use(createPinia()).use(router);
+app.use(ElementPlus);
+app.use(VForm3);
+app.mount('#app');
 
 // 全局方法挂载
-app.config.globalProperties.parseTime = parseTime
-app.config.globalProperties.goBack = goBack
+app.config.globalProperties.parseTime = parseTime;
+app.config.globalProperties.goBack = goBack;
 
 // 全局组件挂载
-import nodeWrap from '@/components/nodeWrap.vue'
+import nodeWrap from '@/components/nodeWrap.vue';
 app.component('nodeWrap', nodeWrap); //初始化组件
-import addNode from '@/components/addNode.vue'
+import addNode from '@/components/addNode.vue';
 app.component('addNode', addNode); //初始化组件
 
 app.directive('focus', {

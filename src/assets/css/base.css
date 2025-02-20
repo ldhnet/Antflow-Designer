@@ -21,11 +21,11 @@ html {
 @font-face {
   font-family: IconFont;
   font-display: fallback;
-  src: url("../assets/font/font_135284_ph2thxxbzgf.eot");
-  src: url("../assets/font/font_135284_ph2thxxbzgf.eot?#iefix") format("embedded-opentype"),
-    url("../assets/font/font_135284_ph2thxxbzgf.woff") format("woff"),
-    url("../assets/font/font_135284_ph2thxxbzgf.ttf") format("truetype"),
-    url("../assets/font/font_135284_ph2thxxbzgf.svg#IconFont") format("svg")
+  src: url("../font/font_135284_ph2thxxbzgf.eot");
+  src: url("../font/font_135284_ph2thxxbzgf.eot?#iefix") format("embedded-opentype"),
+    url("../font/font_135284_ph2thxxbzgf.woff") format("woff"),
+    url("../font/font_135284_ph2thxxbzgf.ttf") format("truetype"),
+    url("../font/font_135284_ph2thxxbzgf.svg#IconFont") format("svg")
 }
 
 input::-ms-clear,
