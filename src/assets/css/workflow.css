@@ -70,9 +70,11 @@
 .flowicon-close-circle:before {
     content:"\2716";
 }
-
+.flowicon-delete {
+    color: rgb(242, 86, 67)
+}
 .flowicon-delete:before {
-    content: "\2716";
+    content: url("../images/delete.png"); 
 }
 
 .flowicon-right:before {
@@ -86,8 +88,7 @@
     color: rgb(242, 86, 67)
 }
 .flowicon-exclamation-circle:before {
-    /* content: url("../assets/images/warning.png"); */
-    content: "\FFFD";
+    content: url("../images/warning.png"); 
 } 
 .flow-btn {
     line-height: 1.5;
@@ -536,7 +537,7 @@ textarea.flow-input {
 }
 
 .zoom .zoom-out {
-    background-image: url(../assets/images/TB1s0qhBHGYBuNjy0FoXXciBFXa-90-90.png)
+    background-image: url(../images/minus-90-90.png)
 }
 
 .zoom .zoom-out.disabled {
@@ -544,7 +545,7 @@ textarea.flow-input {
 }
 
 .zoom .zoom-in {
-    background-image: url(../assets/images/TB1UIgJBTtYBeNjy1XdXXXXyVXa-90-90.png)
+    background-image: url(../images/plus-90-90.png)
 }
 
 .zoom .zoom-in.disabled {
