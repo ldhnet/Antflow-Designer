@@ -96,7 +96,7 @@
                 </div>
             </el-tab-pane>
         </el-tabs>
-        <div class="demo-drawer__footer clear">
+        <div class="flow-drawer__footer clear">
             <el-button type="primary" @click="saveApprover">确 定</el-button>
             <el-button @click="closeDrawer">取 消</el-button>
         </div>

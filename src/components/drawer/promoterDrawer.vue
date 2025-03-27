@@ -6,8 +6,8 @@
 -->
 <template>
     <el-drawer :append-to-body="true" title="发起人" v-model="visible" class="set_promoter" :show-close="false" :size="550" :before-close="savePromoter"> 
-        <div class="demo-drawer__content">
-            <div class="promoter_content drawer_content">
+        <div class="drawer_content">
+            <div class="promoter_content">
                 <p>{{ $func.arrToStr(flowPermission) || '所有人' }}</p> 
                 <span style="font-size: small;color: red;">*发起人 默认全部，预览环境不支持修改，可以联系管理员</span> 
                 <!-- <el-button type="primary" @click="addPromoter">添加/修改发起人</el-button> -->
@@ -18,7 +18,7 @@
                     <a v-if="flowPermission&&flowPermission.length!=0" @click="flowPermission=[]">清除</a>
                 </p>
             </div>
-            <div class="demo-drawer__footer clear">
+            <div class="flow-drawer__footer clear">
                 <el-button type="primary" @click="savePromoter">确 定</el-button>
                 <el-button @click="closeDrawer">取 消</el-button>
             </div> 
@@ -77,6 +77,7 @@ const closeDrawer = () => {
 <style lang="css" scoped> 
 .promoter_content {
     padding: 0 20px;
+    flex: 1 !important;
 } 
 p {
     padding: 18px 0;

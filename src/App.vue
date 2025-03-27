@@ -122,6 +122,9 @@ video {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 110px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .l {
