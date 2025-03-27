@@ -5,19 +5,25 @@
                 <div class="add-node-popover-body">
                     <a class="add-node-popover-item approver" @click="addType(4)">
                         <div class="item-wrapper">
-                            <span class="iconfont"></span>
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/approve.svg" width="35" height="35"/>
+                            </span>
                         </div>
                         <p>审批人</p>
                     </a>
                     <a class="add-node-popover-item notifier" @click="addType(5)">
                         <div class="item-wrapper">
-                            <span class="iconfont"></span>
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/copy-user.svg" width="35" height="35"/>
+                            </span> 
                         </div>
                         <p>抄送人</p>
                     </a>
                     <a class="add-node-popover-item condition" @click="addType(2)">
                         <div class="item-wrapper">
-                            <span class="iconfont"></span>
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/condition.svg" width="35" height="35"/>
+                            </span> 
                         </div>
                         <p>条件分支</p>
                     </a>
@@ -145,40 +151,13 @@ const addType = (type)=> {
                 font-size: 35px;
                 line-height: 65px
             }
-        }
-        &.approver{
-            .item-wrapper {
-                color: #ff943e
-            }
-        }
-        &.notifier{
-            .item-wrapper {
-                color: #3296fa
-            }
-        }
-        &.condition{
-            .item-wrapper {
-                color: #15bc83
-            }
-        }
+        } 
         &:hover{
             .item-wrapper {
-                background: #3296fa;
+                background: #284a6b;
                 box-shadow: 0 10px 20px 0 rgba(50, 150, 250, .4)
-            }
-            .iconfont {
-                color: #fff
-            }
-        }
-        &:active{
-            .item-wrapper {
-                box-shadow: none;
-                background: #eaeaea
-            }
-            .iconfont {
-                color: inherit
-            }
-        }
+            } 
+        } 
     }
 }
 </style>

@@ -5,9 +5,8 @@
  * @FilePath: /flow-designer/src/utils/const.js
  */
 
-export let bgColors = ["", '87, 106, 149', '', '', '255, 148, 62', '50, 150, 250']
+export let bgColors = ["148.6,212.3,117.1", '87, 106, 149', '121.3, 187.1, 255', '51.2, 126.4, 204', '255, 148, 62', '50, 150, 250', '50, 150, 250']
 export let placeholderList = ["发起人", "审核人", "抄送人"];
-
 export let nodeTypeList = ["未知", "发起人", "网关", "条件", "审核人", "抄送人", "抄送人"];
 
 export let setTypes = [
