@@ -35,14 +35,14 @@
                         </div>
                         <div v-else-if="item.columnType == 'String' && item.showType == 2">
                             <p>
-                                <select style="width:300px;" v-model="item.zdy1"> 
+                                <select style="width:335px;" v-model="item.zdy1"> 
                                     <option v-for="({key, value}) in JSON.parse(item.fixedDownBoxValue)" :value="key" :key="key">{{ value }}</option>
                                 </select>
                             </p>                    
                         </div>
                         <div v-else>
                             <p>
-                                <select v-model="item.optType" :style="'width:'+(item.optType==6?370:100)+'px'" @change="changeOptType(item)">
+                                <select v-model="item.optType" :style="'width:'+(item.optType==6?335:100)+'px;margin-right:5px;'" @change="changeOptType(item)">
                                     <option v-for="({value, label}) in optTypes" :value="value" :key="value">{{ label }}</option>
                                 </select>
                                 <input v-if="item.optType!=6" type="text" :placeholder="'请输入'+item.showName" v-enter-number="2" v-model="item.zdy1">
@@ -279,7 +279,7 @@ ul, li {
 }
 .set_condition ul li div {
     display: inline-block;
-    width: 370px;
+    width: 350px;
 }
 
 .set_condition ul li div p:not(:last-child) {
@@ -298,7 +298,7 @@ ul, li {
     border: 1px solid rgba(217, 217, 217, 1);
 }
 .set_condition ul li div p input {
-    width: 200px;
+    width: 230px;
     height: 32px;
     background: rgba(255, 255, 255, 1);
     border-radius: 4px;

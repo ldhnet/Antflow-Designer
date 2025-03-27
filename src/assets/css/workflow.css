@@ -64,35 +64,31 @@
     font-family: flow !important
 }
 
-.flowicon-close:before {
-    /*"\E633" */
-    content: url("../assets/images/add-close1.png");
+.flowicon-close:before { 
+    content: "\2716";
 }
-
-.flowicon-right:before {
-    content: url("../assets/images/jiaojiao.png");
-}
-
-.flowicon-exclamation-circle {
-    color: rgb(242, 86, 67)
-}
-
-.flowicon-exclamation-circle:before {
-    content: url("../assets/images/warning.png");
-}
-
-.flowicon-left:before {
-    content: url("../assets/images/jiaojiao1.png");
-}
-
 .flowicon-close-circle:before {
-    content: url("../assets/images/cancel.png");
+    content:"\2716";
 }
 
 .flowicon-delete:before {
-    content: url("../assets/images/delete.png");
+    content: "\2716";
 }
 
+.flowicon-right:before {
+    content: "\003E";
+}
+
+.flowicon-left:before {
+    content: "\003C";
+}
+.flowicon-exclamation-circle {
+    color: rgb(242, 86, 67)
+}
+.flowicon-exclamation-circle:before {
+    /* content: url("../assets/images/warning.png"); */
+    content: "\FFFD";
+} 
 .flow-btn {
     line-height: 1.5;
     display: inline-block;
@@ -728,6 +724,7 @@ textarea.flow-input {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical
 }
 
@@ -1046,8 +1043,7 @@ textarea.flow-input {
     text-overflow: ellipsis
 }
 
-.dingflow-design .auto-judge .title-wrapper .priority-title {
-    display: inline-block;
+.dingflow-design .auto-judge .title-wrapper .priority-title { 
     float: right;
     margin-right: 10px;
     color: rgba(25, 31, 37, .56)
@@ -1081,6 +1077,7 @@ textarea.flow-input {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical
 }
 

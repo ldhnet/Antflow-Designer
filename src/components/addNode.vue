@@ -134,16 +134,16 @@ const addType = (type)=> {
         .item-wrapper {
             user-select: none;
             display: inline-block;
-            width: 80px;
-            height: 80px;
+            width: 65px;
+            height: 65px;
             margin-bottom: 5px;
             background: #fff;
             border: 1px solid #e2e2e2;
-            border-radius: 50%;
+            border-radius: 10%;
             transition: all .3s cubic-bezier(.645, .045, .355, 1);
             .iconfont {
                 font-size: 35px;
-                line-height: 80px
+                line-height: 65px
             }
         }
         &.approver{

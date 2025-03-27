@@ -102,7 +102,8 @@ input[type=number],
 input[type=password],
 input[type=text],
 textarea {
-  -webkit-appearance: none
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 dl,
@@ -271,7 +272,8 @@ select {
 [type=submit],
 button,
 html [type=button] {
-  -webkit-appearance: button
+  appearance: button;
+  -webkit-appearance: button;
 }
 
 [type=button]::-moz-focus-inner,
@@ -292,7 +294,8 @@ input[type=date],
 input[type=datetime-local],
 input[type=month],
 input[type=time] {
-  -webkit-appearance: listbox
+  appearance: listbox;
+  -webkit-appearance: listbox;
 }
 
 textarea {
@@ -330,6 +333,7 @@ progress {
 
 [type=search] {
   outline-offset: -2px;
+  appearance: none;
   -webkit-appearance: none
 }
 
