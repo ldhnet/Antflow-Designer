@@ -104,11 +104,59 @@ export class NodeUtils {
       nodeFrom: "",
       nodeTo: [],
       childNode: null,
+      isDynamicCondition: false,//true 动态条件 false 非动态条件
+      isParallel: false,//true 是并行条件 false 非并行条件 
       error: true,
       property: null,
       conditionNodes: [
         this.createConditionNode("条件1", child,1, 0),
         this.createConditionNode("条件2", null,2, 1),
+      ],
+    };
+    return gatewayNode;
+  }
+  /**
+   * 创建动态网关对象
+   * @returns object
+   */
+  static createDynamicConditionWayNode(child) {
+    let gatewayNode = {
+      nodeId: this.idGenerator(),
+      nodeName: "动态网关",
+      nodeType: 2,
+      nodeFrom: "",
+      nodeTo: [],
+      childNode: null,
+      isDynamicCondition: true,//true 动态条件 false 非动态条件
+      isParallel: false,//true 是并行条件 false 非并行条件 
+      error: false,
+      property: null,
+      conditionNodes: [
+        this.createConditionNode("动态条件1", child,1,0),
+        this.createConditionNode("动态条件2", null,2, 1),
+      ],
+    };
+    return gatewayNode;
+  }
+   /**
+ * 创建条件并行网关对象
+ * @returns object
+ */
+   static createParallelConditionWayNode(child) {
+    let gatewayNode = {
+      nodeId: this.idGenerator(),
+      nodeName: "条件并行网关",
+      nodeType: 2,
+      nodeFrom: "",
+      nodeTo: [],
+      childNode: this.createParallelNode("条件并行聚合审批人", null,1, 0),        
+      isDynamicCondition: false,//true 动态条件 false 非动态条件
+      isParallel: true,//true 是并行条件 false 非并行条件 
+      error: false,
+      property: null,
+      conditionNodes: [
+        this.createConditionNode("并行条件1", child,1,0),
+        this.createConditionNode("并行条件2", null,2, 0),
       ],
     };
     return gatewayNode;
