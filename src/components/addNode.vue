@@ -1,31 +1,58 @@
 <template>
     <div class="add-node-btn-box">
         <div class="add-node-btn">
-            <el-popover placement="right-start" v-model="visible" width="auto">
+            <el-popover placement="right-start"  v-model="visible" width="auto"> <!--:visible="true" -->
                 <div class="add-node-popover-body">
-                    <a class="add-node-popover-item approver" @click="addType(4)">
+                    <a class="add-node-popover-item approver" @click="addType(1)">
                         <div class="item-wrapper">
                             <span class="iconfont">
                                 <img src="../assets/svg/nodeSvg/approve.svg" width="35" height="35"/>
                             </span>
-                        </div>
-                        <p>审批人</p>
+                            <p>审批人</p>
+                        </div> 
                     </a>
-                    <a class="add-node-popover-item notifier" @click="addType(5)">
+                    <a class="add-node-popover-item approver" @click="addType(3)">
+                        <div class="item-wrapper">
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/parallel-approve.svg" width="35" height="35"/>
+                            </span>
+                            <p>并行审批</p>
+                        </div>
+                    </a>
+                    <a class="add-node-popover-item notifier" @click="addType(2)">
                         <div class="item-wrapper">
                             <span class="iconfont">
                                 <img src="../assets/svg/nodeSvg/copy-user.svg" width="35" height="35"/>
                             </span> 
+                            <p>抄送人</p>
                         </div>
-                        <p>抄送人</p>
                     </a>
-                    <a class="add-node-popover-item condition" @click="addType(2)">
+                  
+                </div>
+                <div class="add-node-popover-body">
+                    <a class="add-node-popover-item condition" @click="addType(4)">
                         <div class="item-wrapper">
                             <span class="iconfont">
                                 <img src="../assets/svg/nodeSvg/condition.svg" width="35" height="35"/>
                             </span> 
+                            <p>条件分支</p>
                         </div>
-                        <p>条件分支</p>
+                    </a>
+                    <a class="add-node-popover-item notifier" @click="addType(5)">
+                        <div class="item-wrapper">
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/dynamic-condition.svg" width="35" height="35"/>
+                            </span> 
+                            <p>动态条件</p>
+                        </div>
+                    </a>
+                    <a class="add-node-popover-item condition" @click="addType(6)">
+                        <div class="item-wrapper">
+                            <span class="iconfont">
+                                <img src="../assets/svg/nodeSvg/parallel-condition.svg" width="35" height="35"/>
+                            </span> 
+                            <p>条件并行</p>
+                        </div>
                     </a>
                 </div>
                 <template #reference>
@@ -48,23 +75,45 @@ let props = defineProps({
 })
 let emits = defineEmits(['update:childNodeP'])
 let visible = ref(false)
-const addType = (type)=> {
-    visible.value = false;
-    if (type != 2 && type != 3) { 
-        let data;
-        if (type == 4) { 
-            data = NodeUtils.createApproveNode();  
-            data.childNode = props.childNodeP; 
-        } else if (type == 5) {
-            data = NodeUtils.createCopyNode();  
-            data.childNode = props.childNodeP;  
-        }
-        emits("update:childNodeP", data)
-    } else {
-        let gatewayNode= NodeUtils.createGatewayNode(props.childNodeP); 
-        emits("update:childNodeP", gatewayNode)
-    }
+/**创建审批人节点 */
+const createApproveNode = (childNode) => {
+   return NodeUtils.createApproveNode(childNode);   
 }
+/**创建抄送人节点 */
+const createCopyNode = (childNode) => {
+    return NodeUtils.createCopyNode(childNode);   
+}
+/**创建并行审批人节点 */
+const createParallelWayNode = (childNode) => {
+    return NodeUtils.createParallelWayNode(childNode);   
+}
+/**创建条件网关节点 */
+const createGatewayNode = (childNode) => {
+    return NodeUtils.createGatewayNode(childNode);   
+}
+/**创建动态网关节点 */
+const createDynamicConditionWayNode = (childNode) => {
+    return NodeUtils.createDynamicConditionWayNode(childNode);   
+}
+/**创建并行网关节点 */
+const createParallelConditionWayNode = (childNode) => {
+    return NodeUtils.createParallelConditionWayNode(childNode);   
+}
+// 创建节点 Map集合
+const createNodeMap = new Map([
+  [1, createApproveNode],
+  [2, createCopyNode],
+  [3, createParallelWayNode],
+  [4, createGatewayNode],
+  [5, createDynamicConditionWayNode],
+  [6, createParallelConditionWayNode]
+]); 
+const addType = (type) => {
+    visible.value = false; 
+    const handleCreateNodeFunc = createNodeMap.get(type); 
+    const newNodeInfo = handleCreateNodeFunc(props.childNodeP); 
+    emits("update:childNodeP", newNodeInfo)
+} 
 </script>
 <style lang="css" scoped>
 .add-node-btn-box {
@@ -114,7 +163,7 @@ const addType = (type)=> {
             transition: all .3s cubic-bezier(.645, .045, .355, 1);
             .iconfont {
                 color: #fff;
-                font-size: 16px
+                font-size: 16px;
             }
             &:hover {
                 transform: scale(1.3);
@@ -141,7 +190,7 @@ const addType = (type)=> {
             user-select: none;
             display: inline-block;
             width: 65px;
-            height: 65px;
+            height: 88px;
             margin-bottom: 5px;
             background: #fff;
             border: 1px solid #e2e2e2;
