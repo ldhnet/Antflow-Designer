@@ -5,17 +5,17 @@
  * @FilePath: /flow-designer/src/components/nodeWrap.vue
 -->
 <template>
-    <div class="node-wrap" v-if="nodeConfig.nodeType != 2  && nodeConfig.nodeType != 7">
+    <div class="node-wrap" v-if="nodeConfig.nodeType != 2 && nodeConfig.nodeType != 7">
         <div class="node-wrap-box"
             :class="(nodeConfig.nodeType == 1 ? 'start-node ' : '') + (isTried && nodeConfig.error ? 'active error' : '')">
             <div class="title" :style="`background: rgb(${bgColors[nodeConfig.nodeType]});`">
                 <span v-if="nodeConfig.nodeType == 1">{{ nodeConfig.nodeName }}</span>
-                <template v-else> 
+                <template v-else>
                     <span class="iconfont" v-if="nodeConfig.nodeType == 4">
                         <img src="../assets/svg/nodeSvg/approve-white.svg" width="15" height="15" />
                     </span>
                     <span class="iconfont" v-else>
-                        <img src="../assets/svg/nodeSvg/copy-white.svg" width="15" height="15" />
+                        <img src="../assets/svg/nodeSvg/copy-user-white.svg" width="15" height="15" />
                     </span>
                     <input v-if="isInput" type="text" class="flow-input editable-title-input" @blur="blurEvent()"
                         @focus="$event.currentTarget.select()" v-focus v-model="nodeConfig.nodeName"
@@ -24,7 +24,7 @@
                     <i class="flowicon flowicon-close close" @click="delNode"></i>
                 </template>
             </div>
-            <div class="content" @click="setPerson">
+            <div class="content" @click="setNodeInfo">
                 <div class="text">
                     <span class="placeholder" v-if="!showText">请选择{{ defaultText }}</span>
                     {{ showText }}
@@ -47,18 +47,28 @@
                             <div class="auto-judge" :class="isTried && item.error ? 'error active' : ''">
                                 <div class="sort-left" v-if="index != 0" @click="arrTransfer(index, -1)">&lt;</div>
                                 <div class="title-wrapper">
+                                    <span class="iconfont" v-if="nodeConfig.isDynamicCondition == true">
+                                        <img src="../assets/svg/nodeSvg/dynamic-condition.svg" width="15" height="15" />
+                                    </span>
+                                    <span class="iconfont" v-else-if="nodeConfig.isParallel == true">
+                                        <img src="../assets/svg/nodeSvg/parallel-condition.svg" width="15"
+                                            height="15" />
+                                    </span>
+                                    <span class="iconfont" v-else>
+                                        <img src="../assets/svg/nodeSvg/condition.svg" width="15" height="15" />
+                                    </span>
                                     <input v-if="isInputList[index]" type="text" class="flow-input editable-title-input"
                                         @blur="blurEvent(index)" @focus="$event.currentTarget.select()" v-focus
                                         v-model="item.nodeName" />
                                     <span v-else class="editable-title" @click="clickEvent(index)">{{ item.nodeName
-                                        }}</span>
-                                    <span class="priority-title" @click="setPerson(item.priorityLevel)">优先级{{
+                                    }}</span>
+                                    <span class="priority-title" @click="setNodeInfo(item.priorityLevel)">优先级{{
                                         item.priorityLevel }}</span>
                                     <i class="flowicon flowicon-close close" @click="delTerm(index)"></i>
                                 </div>
                                 <div class="sort-right" v-if="index != nodeConfig.conditionNodes.length - 1"
                                     @click="arrTransfer(index)">&gt;</div>
-                                <div class="content" @click="setPerson(item.priorityLevel)">{{
+                                <div class="content" @click="setNodeInfo(item.priorityLevel)">{{
                                     $func.conditionStr(nodeConfig, index) }}</div>
                                 <div class="error_tip" v-if="isTried && item.error">
                                     <i class="flowicon flowicon-exclamation-circle"></i>
@@ -98,14 +108,14 @@
                                         @blur="blurEvent(index)" @focus="$event.currentTarget.select()" v-focus
                                         v-model="item.nodeName" />
                                     <span v-else class="editable-title" @click="clickEvent(index)">{{ item.nodeName
-                                        }}</span>
+                                    }}</span>
                                     <i class="flowicon flowicon-close close" @click="delTerm(index)"></i>
                                 </div>
 
                                 <div class="content" @click="setNodeInfo(index)">
                                     <div class="text">
                                         <span class="placeholder" v-if="!item.nodeDisplayName">请选择{{ defaultText
-                                            }}</span>
+                                        }}</span>
                                         {{ item.nodeDisplayName }}
                                     </div>
                                     <i class="anticon anticon-right arrow"></i>
@@ -235,11 +245,7 @@ const resetParallelNodesErr = () => {
 }
 
 onMounted(() => {
-    if (props.nodeConfig.nodeType == 4) {
-        props.nodeConfig.error = !$func.setApproverStr(props.nodeConfig);
-    } else if (props.nodeConfig.nodeType == 6) {
-        props.nodeConfig.error = !$func.copyerStr(props.nodeConfig);
-    } else if (props.nodeConfig.nodeType == 2) {
+    if (props.nodeConfig.nodeType == 2) {
         resetConditionNodesErr()
     } else if (props.nodeConfig.nodeType == 7) {
         resetParallelNodesErr();
@@ -371,7 +377,7 @@ const resetConditionNodesTitle = (conditionNode, len) => {
     return `条件${len + 1}`;
 }
 
-const setPerson = (priorityLevel) => {
+const setNodeInfo = (index) => {
     var { nodeType } = props.nodeConfig;
     if (nodeType == 1) {
         setPromoter(true);
@@ -413,7 +419,7 @@ const setPerson = (priorityLevel) => {
         setCondition(true);
         setConditionsConfig({
             value: JSON.parse(JSON.stringify(props.nodeConfig)),
-            priorityLevel,
+            index,
             flag: false,
             id: _uid,
         });

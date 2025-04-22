@@ -400,7 +400,7 @@ export class NodeUtils {
   /**
    * 创建审批人对象
    */
-  static createApproveNode() {
+  static createApproveNode(child) {
     let approveNode = {
       nodeId: this.idGenerator(),
       nodeName: "审核人",
@@ -412,7 +412,7 @@ export class NodeUtils {
       directorLevel: 1,
       signType: 1,
       noHeaderAction: 1,
-      childNode: {},
+      childNode: child,
       error: true,
       property: {
         afterSignUpWay: 1,
@@ -430,7 +430,7 @@ export class NodeUtils {
    * 创建抄送人对象
    * @returns object
    */
-  static createCopyNode() {
+  static createCopyNode(child) {
     let copyNode = {
       nodeId: this.idGenerator(),
       nodeName: "抄送人",
@@ -441,7 +441,7 @@ export class NodeUtils {
       setType: 1,
       error: true,
       ccFlag: 1,
-      childNode: {},
+      childNode: child,
       property: {},
       buttons: {
         startPage: [],
@@ -451,25 +451,7 @@ export class NodeUtils {
       nodeApproveList: [],
     };
     return copyNode;
-  }
-  /**
-   * 创建网关对象
-   * @returns object
-   */
-  static createGatewayNode() {
-    let gatewayNode = {
-      nodeId: this.idGenerator(),
-      nodeName: "网关",
-      nodeType: 2,
-      nodeFrom: "",
-      nodeTo: [],
-      childNode: null,
-      error: true,
-      property: null,
-      conditionNodes: [],
-    };
-    return gatewayNode;
-  }
+  } 
   /**
    * 创建网关对象
    * @returns object
@@ -635,7 +617,7 @@ export class NodeUtils {
       nodeTo: [],
       priorityLevel: priority,
       nodeApproveList: [],
-      setType: 5, //审批人类型 5、指定人员
+      setType: 1, //审批人类型 1、指定人员
       signType: 1, //审批方式 1:会签-需全部同意，2:或签-一人同意即可，3：顺序会签
       isSignUp: 0, //是否加批 0:否，1:是
       noHeaderAction: 1,
