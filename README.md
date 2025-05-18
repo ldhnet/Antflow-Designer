@@ -6,8 +6,8 @@
 
 - [![star](https://gitee.com/ldhnet/Antflow-Designer/badge/star.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/stargazers)  [![fork](https://gitee.com/ldhnet/Antflow-Designer/badge/fork.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/members)
 
--  成品案例  [预览入口](http://117.72.70.166/admin/)
--  独立流程设计器 [预览入口](http://117.72.70.166/ant-flow/dist/) 
+-  成品案例  [预览入口](http://14.103.207.27/admin/)
+-  独立流程设计器 [预览入口](http://14.103.207.27/ant-flow/dist/) 
 -  项目文档 [wiki入口](https://gitee.com/ldhnet/Antflow-Designer/wikis) 
 -  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/Antflow-Designer) | [GitHub仓库](https://github.com/ldhnet/Antflow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/Antflow-Designer/overview) 
 -  Antflow项目地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/Antflow) | [GitCode仓库](https://gitcode.com/zypqqgc/Antflow/overview) 
