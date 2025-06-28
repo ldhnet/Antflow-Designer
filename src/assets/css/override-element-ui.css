@@ -8,17 +8,12 @@
 .el-drawer__header .el-drawer__title{
     font-size: 16px !important;
 }
-.demo-drawer__content {
+.drawer_content {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
 }
-
-.drawer_content {
-    flex: 1 !important;
-}
-
-.demo-drawer__content>div {
+.drawer_content>div {
     border-top: 1px solid #F2F2F2 !important;
 }
 /* 
@@ -52,12 +47,12 @@
     background: #67c23a !important;
     color: #fff !important;
 } */
-.demo-drawer__footer {
+.flow-drawer__footer {
     padding: 10px 30px !important;
     border-top: 1px solid #F2F2F2 !important;
 }
 
-.demo-drawer__footer .el-button {
+.flow-drawer__footer .el-button {
     float: right !important;
     margin-right: 10px !important;
 }

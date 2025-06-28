@@ -56,8 +56,7 @@ onMounted(async () => {
     nodeConfig.value = props.processData;
   }
 
-  zoomInit(dingflowDesignRef, boxScaleRef, (val) => {
-    console.log(val)
+  zoomInit(dingflowDesignRef, boxScaleRef, (val) => { 
     nowVal.value = val
   })
 });

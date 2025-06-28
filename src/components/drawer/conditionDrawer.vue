@@ -6,15 +6,15 @@
 -->
 
 <template>
-    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" class="set_condition" :show-close="false" :size="600" :before-close="saveCondition"> 
+    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" class="set_condition" :show-close="false" :size="680" :before-close="saveCondition"> 
         <template #header="{ titleId, titleClass }">
             <h3 :id="titleId" :class="titleClass">条件设置</h3>
             <select v-model="conditionConfig.priorityLevel" class="priority_level">
                 <option v-for="item in conditionsConfig.conditionNodes.length" :value="item" :key="item">优先级{{item}}</option>
             </select>
         </template>
-        <div class="demo-drawer__content">
-            <div class="condition_content drawer_content">
+        <div class="drawer_content">
+            <div class="condition_content">
                 <p class="tip">当审批单同时满足以下条件时进入此流程</p>
                 <ul>
                     <li v-for="(item,index) in conditionConfig.conditionList" :key="index">
@@ -33,31 +33,38 @@
                                 v-for="(item1,index1) in JSON.parse(item.fixedDownBoxValue)" :key="index1">{{item1.value}}</a>
                             </p>
                         </div>
-                        <div v-else-if="item.columnType == 'String' && item.showType == 2">
-                            <p>
-                                <select style="width:300px;" v-model="item.zdy1"> 
-                                    <option v-for="({key, value}) in JSON.parse(item.fixedDownBoxValue)" :value="key" :key="key">{{ value }}</option>
-                                </select>
-                            </p>                    
+                        <div v-else-if="item.columnType == 'String' && item.showType == 2"> 
+                            <p v-if="item.fixedDownBoxValue">
+                                <el-select :placeholder="'请选择' + item.showName" v-model="item.zdy1" style="width:400px;margin-right:10px;">
+                                    <el-option v-for="itemOpt in JSON.parse(item.fixedDownBoxValue)" :key="itemOpt.key"
+                                        :label="itemOpt.value" :value="itemOpt.key" />
+                                </el-select>
+                            </p>         
                         </div>
                         <div v-else>
                             <p>
-                                <select v-model="item.optType" :style="'width:'+(item.optType==6?370:100)+'px'" @change="changeOptType(item)">
-                                    <option v-for="({value, label}) in optTypes" :value="value" :key="value">{{ label }}</option>
-                                </select>
-                                <input v-if="item.optType!=6" type="text" :placeholder="'请输入'+item.showName" v-enter-number="2" v-model="item.zdy1">
+                                <el-select :style="'width:' + (item.optType == 6 ? 400 : 100) + 'px;margin-right:10px;'"
+                                    @change="changeOptType(item)"
+                                    v-model="item.optType">
+                                    <el-option v-for="itemOpt in optTypes" :key="itemOpt.value" :label="itemOpt.label"
+                                        :value="itemOpt.value" />
+                                </el-select>
+                                <el-input v-if="item.optType != 6" style="width:230px;" :placeholder="'请输入' + item.showName" v-model="item.zdy1"/>
                             </p>
-                            <p v-if="item.optType==6">
-                                <input type="text" style="width:75px;" class="mr_10" v-enter-number="2" v-model="item.zdy1">
-                                <select style="width:60px;" v-model="item.opt1">
-                                    <option v-for="({value, label}) in opt1s" :value="value" :key="value">{{ label }}</option>
-                                </select>
-                                <span class="ellipsis" style="display:inline-block;width:60px;vertical-align: text-bottom;">{{item.showName}}</span>
-                                <select style="width:60px;" class="ml_10" v-model="item.opt2">
-                                    <option v-for="({value, label}) in opt1s" :value="value" :key="value">{{ label }}</option>
-                                </select>
-                                <input type="text" style="width:75px;" v-enter-number="2" v-model="item.zdy2">
-                            </p>
+                            <p v-if="item.optType == 6">
+                                <el-input style="width:90px;" v-model="item.zdy1"/>
+                                <el-select style="width:60px;" v-model="item.opt1">
+                                    <el-option v-for="itemOpt in opt1s" :key="itemOpt.value" :label="itemOpt.label"
+                                        :value="itemOpt.value" />
+                                </el-select>
+                                <strong class="ellipsis">{{
+                                    item.showName }}</strong>
+                                <el-select style="width:60px;" v-model="item.opt1">
+                                    <el-option v-for="itemOpt in opt1s" :key="itemOpt.value" :label="itemOpt.label"
+                                        :value="itemOpt.value" />
+                                </el-select>
+                                <el-input style="width:90px;" v-model="item.zdy2" />
+                            </p>                    
                         </div>
                         <a v-if="item.type==1" @click="conditionConfig.nodeApproveList= [];$func.removeEle(conditionConfig.conditionList,item,'formId')">
                             <i class="flowicon flowicon-delete" style="color: #f00;"></i>
@@ -82,7 +89,7 @@
                     </template>
                 </el-dialog>
             </div> 
-            <div class="demo-drawer__footer clear">
+            <div class="flow-drawer__footer clear">
                 <el-button type="primary" @click="saveCondition">确 定</el-button>
                 <el-button @click="closeDrawer">取 消</el-button>
             </div>
@@ -246,13 +253,14 @@ ul, li {
 
 .set_condition .condition_content{
     padding: 20px 20px 0; 
+    flex: 1 !important;
 } 
 .set_condition .el-button {
     margin-bottom: 20px;
 }
 .set_condition p.tip {
     margin: 20px 0;
-    width: 510px;
+    width: 100%;
     text-indent: 17px;
     line-height: 45px;
     background: rgba(241, 249, 255, 1);
@@ -263,23 +271,21 @@ ul, li {
 
 .set_condition  ul {
     max-height: 500px;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     margin-bottom: 20px; 
 }
-.set_condition  ul li{ 
-    height: 50px;
-    line-height: 50px; 
+.set_condition  ul li{  
+    line-height: 25px; 
 }
 .set_condition ul li span {
     float: left;
     margin-right: 8px;
-    width: 120px !important; 
+    width: 150px !important; 
     text-align: right;
     color: #0857a1;
 }
 .set_condition ul li div {
-    display: inline-block;
-    width: 370px;
+    display: inline-block; 
 }
 
 .set_condition ul li div p:not(:last-child) {
@@ -289,22 +295,7 @@ ul, li {
 .set_condition ul li:not(:last-child)>div>p {
     margin-bottom: 20px;
 } 
-
-.set_condition ul li div p select {
-    width: 50%;
-    height: 32px;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 4px;
-    border: 1px solid rgba(217, 217, 217, 1);
-}
-.set_condition ul li div p input {
-    width: 200px;
-    height: 32px;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 4px;
-    border: 1px solid rgba(217, 217, 217, 1);
-}
- 
+  
 .set_condition ul li p.selected_list {
     padding-left: 10px;
     border-radius: 4px;

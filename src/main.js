@@ -20,24 +20,22 @@ import './lib/vform/designer.style.css';
 
 const app = createApp(App).use(createPinia()).use(router);
 app.use(ElementPlus);
-app.use(VForm3);
-app.mount('#app');
-
+app.use(VForm3); 
 // 全局方法挂载
 app.config.globalProperties.parseTime = parseTime;
-app.config.globalProperties.goBack = goBack;
-
+app.config.globalProperties.goBack = goBack; 
 // 全局组件挂载
-import nodeWrap from '@/components/nodeWrap.vue';
-app.component('nodeWrap', nodeWrap); //初始化组件
 import addNode from '@/components/addNode.vue';
-app.component('addNode', addNode); //初始化组件
+import nodeWrap from '@/components/nodeWrap.vue';
+app.component('nodeWrap', nodeWrap); 
+app.component('addNode', addNode);
 
 app.directive('focus', {
   mounted(el) {
     el.focus();
   }
 });
+app.mount('#app');
 
 let debounce = (fn, delay) => {
   var delay = delay || 100;

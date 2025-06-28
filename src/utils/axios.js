@@ -6,16 +6,10 @@
  */
 "use strict";
 
-import axios from "axios";
-
-// Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
-
+import axios from "axios"; 
 let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  // timeout: 60 * 1000, // Timeout
+  timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
  
@@ -26,20 +20,17 @@ _axios.interceptors.request.use(
     config.headers = config.headers || {};   
     return config;
   },
-  function (error) {
-    // Do something with request error
+  function (error) { 
     return Promise.reject(error);
   }
 );
 
 // Add a response interceptor
 _axios.interceptors.response.use(
-  function (response) {
-    // Do something with response data
+  function (response) { 
     return response.data;
   },
-  function (error) {
-    // Do something with response error
+  function (error) { 
     return Promise.reject(error);
   }
 );
