@@ -6,8 +6,8 @@
 
 - [![star](https://gitee.com/ldhnet/Antflow-Designer/badge/star.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/stargazers)  [![fork](https://gitee.com/ldhnet/Antflow-Designer/badge/fork.svg?theme=dark)](https://gitee.com/ldhnet/Antflow-Designer/members)
 
--  成品案例  [预览入口](http://117.72.70.166/admin/)
--  独立流程设计器 [预览入口](http://117.72.70.166/ant-flow/dist/) 
+-  成品案例  [预览入口](http://14.103.207.27/admin/)
+-  独立流程设计器 [预览入口](http://14.103.207.27/ant-flow/dist/) 
 -  项目文档 [wiki入口](https://gitee.com/ldhnet/Antflow-Designer/wikis) 
 -  流程设计器地址 [Gitee仓库](https://gitee.com/ldhnet/Antflow-Designer) | [GitHub仓库](https://github.com/ldhnet/Antflow-Designer) | [GitCode仓库](https://gitcode.com/ldhnet/Antflow-Designer/overview) 
 -  Antflow项目地址 [Gitee仓库](https://gitee.com/tylerzhou/Antflow) | [Github仓库](https://github.com/mrtylerzhou/Antflow) | [GitCode仓库](https://gitcode.com/zypqqgc/Antflow/overview) 
@@ -57,6 +57,10 @@
 
 ##  捐赠支持
 😀 你可以请作者喝杯咖啡表示鼓励
+
+- 有捐赠的小伙伴（金额不限）可以联系作者领取一份 **独家提升开发技能的文档** 
+- 加QQ574427343或者邮件到 574427343@qq.com邮箱 *注明 领取开发技能提升文档*
+
 <table>
     <tr>
         <td><img src="https://gitee.com/ldhnet/Antflow-Designer/raw/master/public/images/wxpay.jpg"/></td>
